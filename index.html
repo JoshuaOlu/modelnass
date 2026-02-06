@@ -1,105 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Model National Assembly (Model NASS)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model NASS — The Boundary Proposal</title>
 
   <style>
     :root {
-      --deep-green: #0f3d2e;
-      --light-green: #1e6f50;
-      --background: #f5f7f6;
-      --text-dark: #1a1a1a;
-      --text-muted: #555;
+      --deep-green: #0b3d2e;
+      --deep-green-dark: #07281e;
+      --off-white: #f4f6f5;
+      --soft-gray: #dfe6e3;
+      --accent-gold: #c9a24d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: var(--background);
-      color: var(--text-dark);
+      background-color: var(--off-white);
+      color: #1c1c1c;
+      line-height: 1.6;
     }
 
     header {
-      background: var(--deep-green);
-      color: white;
-      padding: 60px 20px;
+      background: linear-gradient(
+        rgba(11, 61, 46, 0.95),
+        rgba(11, 61, 46, 0.95)
+      ),
+      url("hero-bg.jpg") center/cover no-repeat;
+      color: var(--off-white);
+      padding: 5rem 1.5rem;
       text-align: center;
     }
 
     header img {
-      max-height: 80px;
-      margin-bottom: 20px;
+      max-width: 90px;
+      margin-bottom: 1.5rem;
     }
 
     header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    header p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.5;
-      opacity: 0.95;
+    header h2 {
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: var(--soft-gray);
+    }
+
+    .session-tag {
+      margin-top: 1rem;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .intro-text {
+      max-width: 720px;
+      margin: 2rem auto 0;
+      font-size: 1.05rem;
+      color: var(--off-white);
     }
 
     section {
+      padding: 4rem 1.5rem;
       max-width: 900px;
       margin: auto;
-      padding: 60px 20px;
     }
 
-    h2 {
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
       color: var(--deep-green);
-      margin-bottom: 15px;
-      font-size: 2em;
     }
 
     p {
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-
-    .lore-box {
-      background: white;
-      border-left: 6px solid var(--deep-green);
-      padding: 30px;
-      margin-top: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 1.2rem;
     }
 
     .cta {
-      background: var(--deep-green);
-      color: white;
+      background-color: var(--deep-green);
+      color: var(--off-white);
+      padding: 3rem 2rem;
       text-align: center;
-      padding: 60px 20px;
-      margin-top: 60px;
+      border-radius: 12px;
+      margin: 4rem auto;
     }
 
-    .cta h2 {
-      color: white;
-      margin-bottom: 20px;
+    .cta h3 {
+      color: var(--off-white);
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      color: var(--soft-gray);
+      margin-bottom: 2rem;
     }
 
     .cta a {
       display: inline-block;
-      background: white;
-      color: var(--deep-green);
-      padding: 15px 30px;
+      padding: 0.9rem 1.8rem;
+      background-color: var(--accent-gold);
+      color: #000;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 1.1em;
       border-radius: 6px;
-      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .cta a:hover {
+      transform: translateY(-2px);
+    }
+
+    .lore-box {
+      background: #ffffff;
+      border-left: 6px solid var(--deep-green);
+      padding: 1.8rem;
+      border-radius: 8px;
+      margin-top: 2rem;
     }
 
     footer {
+      background-color: var(--deep-green-dark);
+      color: var(--soft-gray);
       text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: #777;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
     }
   </style>
 </head>
@@ -107,83 +145,85 @@
 <body>
 
 <header>
-  <!-- Replace logo.png with your actual logo file -->
-  <img src="logo.png" alt="Model NASS Logo">
+  <!-- Replace with your logo -->
+  <!-- <img src="logo.png" alt="Model NASS Logo"> -->
 
-  <h1>Model National Assembly</h1>
-  <p>
-    A youth legislative assembly created in the aftermath of national unrest —
-    where young delegates deliberate, negotiate, and shape the future of the Republic of Mona.
+  <h1>Model National Assembly (Model NASS)</h1>
+  <h2>The Boundary Proposal: Who Owns the Future?</h2>
+  <div class="session-tag">The March 28 Emergency Session</div>
+
+  <p class="intro-text">
+    A youth legislative assembly formed in the aftermath of national unrest —
+    where young delegates deliberate, negotiate, and shape the future of the
+    Federal Republic of Mona.
   </p>
 </header>
 
-<section>
-  <h2>Why Model NASS Exists</h2>
+<!-- CTA moved UP -->
+<section class="cta">
+  <h3>Apply to Join the March 28 Emergency Session</h3>
   <p>
-    Years ago, a nationwide youth revolt shook Mona. What began as peaceful protest
-    escalated into violent confrontation after state suppression. When the dust settled,
-    one truth was undeniable: the youth could no longer remain spectators in national affairs.
+    Only 36 youth delegates will be selected to participate in this historic
+    emergency sitting of the Model National Assembly.
   </p>
+  <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
+    Apply Now
+  </a>
+</section>
 
+<section>
+  <h3>Why Model NASS Exists</h3>
   <p>
-    In response, the National Assembly established the <strong>Model National Assembly (Model NASS)</strong> —
-    a formal youth deliberative body empowered to debate national issues and submit
-    fast-tracked resolutions directly to the National Assembly and the President.
+    Following years of youth-led protests and national upheaval, the Federal
+    Republic of Mona established the Model National Assembly — a youth
+    deliberative body empowered to debate national crises and submit resolutions
+    directly to the National Assembly and the President.
+  </p>
+  <p>
+    Model NASS is not symbolic. It is consultative, urgent, and consequential.
+    Its sessions mirror real legislative pressure, ethical tension, and national
+    responsibility.
   </p>
 </section>
 
 <section>
-  <h2>Emergency Session: The Boundary Proposal</h2>
+  <h3>The Boundary Crisis</h3>
 
   <div class="lore-box">
     <p>
-      A disputed strip of land lies between two states.
-      Beneath it lies a rare mineral critical to Mona’s economic future.
+      A long-disputed border between two states, two peoples, and two faiths has
+      erupted once again — this time over land rich in coltan, a mineral critical
+      to global technology.
     </p>
-
     <p>
-      For decades, the border communities have lived with unresolved claims,
-      fragile coexistence, and buried resentment.
-      Now, a foreign mining investment has brought those tensions to the surface.
+      As violence spreads and displacement grows, the Federal Government has
+      invoked emergency powers and summoned the Model National Assembly to
+      deliberate.
     </p>
-
     <p>
-      Regional guards are mobilizing.
-      Communities are fleeing.
-      The Federal Government has declared a National Emergency.
-    </p>
-
-    <p>
-      The Model National Assembly has been summoned to deliberate —
-      not on a bill, but on a <strong>Resolution for Action</strong>:
-      a proposal that could stabilize the region… or deepen the fracture.
+      Delegates must confront questions of justice, federal authority, economic
+      survival, and coexistence — under pressure, in real time.
     </p>
   </div>
 </section>
 
 <section>
-  <h2>Who Should Apply</h2>
+  <h3>Who Can Apply?</h3>
   <p>
-    This simulation is open to young people interested in governance,
-    public policy, law, political science, conflict resolution, research,
-    and nation-building.
+    This session is open to students and young professionals interested in
+    governance, law, policy, research, civic engagement, and nation-building.
   </p>
-
   <p>
-    Only <strong>36 delegates</strong> will be selected to represent diverse interests
-    within the Assembly.
+    No prior simulation experience is required — only seriousness, curiosity,
+    and a willingness to think deeply.
   </p>
 </section>
 
-<div class="cta">
-  <h2>Do You Belong in the Chamber?</h2>
-  <a href="PUT_GOOGLE_FORM_LINK_HERE" target="_blank">
-    Apply to Join the Emergency Session
-  </a>
-</div>
-
 <footer>
-  © Model National Assembly (Model NASS) · Fictional Simulation for Civic Learning
+  © 2026 Model NASS · 
+  <a href="https://careforknowledge.org" target="_blank">
+    Care for Knowledge
+  </a>
 </footer>
 
 </body>
