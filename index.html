@@ -15,49 +15,43 @@
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: "Inter", system-ui, sans-serif;
     }
 
     body {
       background-color: var(--off-white);
       color: #1c1c1c;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     header {
       background: linear-gradient(
-        rgba(11, 61, 46, 0.95),
-        rgba(11, 61, 46, 0.95)
-      ),
-      url("hero-bg.jpg") center/cover no-repeat;
+        rgba(11, 61, 46, 0.96),
+        rgba(11, 61, 46, 0.96)
+      );
       color: var(--off-white);
-      padding: 5rem 1.5rem;
+      padding: 4.5rem 1.5rem;
       text-align: center;
     }
 
-    header img {
-      max-width: 90px;
-      margin-bottom: 1.5rem;
-    }
-
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      margin-bottom: 0.4rem;
     }
 
     header h2 {
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
       font-weight: 400;
-      font-size: 1.3rem;
       color: var(--soft-gray);
     }
 
     .session-tag {
       margin-top: 1rem;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent-gold);
     }
@@ -70,28 +64,33 @@
     }
 
     section {
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       max-width: 900px;
       margin: auto;
     }
 
     h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: clamp(1.6rem, 4vw, 1.9rem);
+      margin-bottom: 1.4rem;
       color: var(--deep-green);
+      text-align: center;
     }
 
     p {
       margin-bottom: 1.2rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta {
       background-color: var(--deep-green);
       color: var(--off-white);
-      padding: 3rem 2rem;
+      padding: 3rem 1.5rem;
       text-align: center;
-      border-radius: 12px;
-      margin: 4rem auto;
+      border-radius: 14px;
+      margin: 3.5rem auto;
+      max-width: 900px;
     }
 
     .cta h3 {
@@ -106,32 +105,34 @@
 
     .cta a {
       display: inline-block;
-      padding: 0.9rem 1.8rem;
+      padding: 0.95rem 2rem;
       background-color: var(--accent-gold);
       color: #000;
       font-weight: 600;
       text-decoration: none;
-      border-radius: 6px;
-      transition: transform 0.2s ease;
+      border-radius: 7px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cta a:hover {
       transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
 
     .lore-box {
       background: #ffffff;
       border-left: 6px solid var(--deep-green);
       padding: 1.8rem;
-      border-radius: 8px;
-      margin-top: 2rem;
+      border-radius: 10px;
+      max-width: 760px;
+      margin: 2rem auto 0;
     }
 
     footer {
       background-color: var(--deep-green-dark);
       color: var(--soft-gray);
       text-align: center;
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.2rem;
       font-size: 0.9rem;
     }
 
@@ -145,9 +146,7 @@
 <body>
 
 <header>
-  <!-- Replace with your logo -->
   <img src="images/logo.png" alt="Model NASS Logo">
-
   <h1>Model National Assembly (Model NASS)</h1>
   <h2>The Boundary Proposal: Who Owns the Future?</h2>
   <div class="session-tag">The March 28 Emergency Session</div>
@@ -159,12 +158,11 @@
   </p>
 </header>
 
-<!-- CTA moved UP -->
 <section class="cta">
   <h3>Apply to Join the March 28 Emergency Session</h3>
   <p>
-    Only 36 youth delegates will be selected to participate in this historic
-    emergency sitting of the Model National Assembly.
+    Only 36 delegates will be selected to participate in this historic emergency
+    sitting of the Model National Assembly.
   </p>
   <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
     Apply Now
@@ -175,34 +173,27 @@
   <h3>Why Model NASS Exists</h3>
   <p>
     Following years of youth-led protests and national upheaval, the Federal
-    Republic of Mona established the Model National Assembly — a youth
-    deliberative body empowered to debate national crises and submit resolutions
-    directly to the National Assembly and the President.
+    Republic of Mona established the Model National Assembly — a youth body
+    empowered to deliberate on national crises and submit resolutions directly
+    to the National Assembly and the President.
   </p>
   <p>
-    Model NASS is not symbolic. It is consultative, urgent, and consequential.
-    Its sessions mirror real legislative pressure, ethical tension, and national
-    responsibility.
+    Model NASS is consultative, urgent, and consequential. Its sessions mirror
+    real legislative pressure, ethical tension, and national responsibility.
   </p>
 </section>
 
 <section>
   <h3>The Boundary Crisis</h3>
-
   <div class="lore-box">
     <p>
-      A long-disputed border between two states, two peoples, and two faiths has
-      erupted once again — this time over land rich in coltan, a mineral critical
-      to global technology.
+      A disputed border between two states, two peoples, and two faiths has
+      erupted again — this time over land rich in coltan, a mineral critical to
+      global technology.
     </p>
     <p>
       As violence spreads and displacement grows, the Federal Government has
-      invoked emergency powers and summoned the Model National Assembly to
-      deliberate.
-    </p>
-    <p>
-      Delegates must confront questions of justice, federal authority, economic
-      survival, and coexistence — under pressure, in real time.
+      summoned the Model National Assembly to deliberate under emergency powers.
     </p>
   </div>
 </section>
@@ -210,13 +201,25 @@
 <section>
   <h3>Who Can Apply?</h3>
   <p>
-    This session is open to students and young professionals interested in
-    governance, law, policy, research, civic engagement, and nation-building.
+    Students and young professionals interested in governance, law, policy,
+    research, civic engagement, and nation-building.
   </p>
   <p>
     No prior simulation experience is required — only seriousness, curiosity,
     and a willingness to think deeply.
   </p>
+</section>
+
+<!-- SECOND CTA -->
+<section class="cta">
+  <h3>Step Into the Assembly</h3>
+  <p>
+    This is not a conference. This is not a webinar.
+    It is a legislative emergency.
+  </p>
+  <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
+    Submit Your Application
+  </a>
 </section>
 
 <footer>
