@@ -43,49 +43,49 @@
       --off-white: #f4f6f5;
       --soft-gray: #dfe6e3;
       --accent-gold: #c9a24d;
+      --light-section: #ffffff;
     }
-
+  
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: "Inter", system-ui, sans-serif;
     }
-
+  
     body {
       background-color: var(--off-white);
       color: #1c1c1c;
-      line-height: 1.65;
+      line-height: 1.7;
     }
-
+  
     header {
       background: linear-gradient(
         rgba(11, 61, 46, 0.96),
         rgba(11, 61, 46, 0.96)
       );
       color: var(--off-white);
-      padding: 4.5rem 1.5rem;
+      padding: 5rem 1.5rem;
       text-align: center;
     }
-
+  
     header img {
       max-width: 200px;
-      height: auto;
-      display: block;
       margin: 0 auto 1rem auto;
+      display: block;
     }
-
+  
     header h1 {
       font-size: clamp(2rem, 5vw, 2.6rem);
       margin-bottom: 0.4rem;
     }
-
+  
     header h2 {
       font-size: clamp(1.2rem, 4vw, 1.4rem);
       font-weight: 400;
       color: var(--soft-gray);
     }
-
+  
     .session-tag {
       margin-top: 1rem;
       font-size: 0.9rem;
@@ -93,100 +93,113 @@
       text-transform: uppercase;
       color: var(--accent-gold);
     }
-
+  
     .intro-text {
       max-width: 720px;
       margin: 2rem auto 0;
       font-size: 1.05rem;
       color: var(--off-white);
     }
-
+  
     section {
-      padding: 3.5rem 1.5rem;
+      padding: 4rem 1.5rem;
       max-width: 900px;
       margin: auto;
       text-align: center;
     }
-
+  
+    section.alt {
+      background: var(--light-section);
+      border-radius: 14px;
+      margin: 2rem auto;
+    }
+  
     h3 {
       font-size: clamp(1.6rem, 4vw, 1.9rem);
       margin-bottom: 1.4rem;
       color: var(--deep-green);
     }
-
+  
     p {
       margin-bottom: 1.2rem;
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
     }
-
+  
+    .bridge {
+      background: linear-gradient(to bottom, #ffffff, #f8faf9);
+      border-radius: 14px;
+      margin: 2rem auto;
+    }
+  
     .cta {
       background-color: var(--deep-green);
       color: var(--off-white);
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       text-align: center;
       border-radius: 14px;
-      margin: 3.5rem auto;
+      margin: 4rem auto;
       max-width: 900px;
     }
-
+  
     .cta h3 {
       color: var(--off-white);
     }
-
+  
     .cta p {
       color: var(--soft-gray);
       margin-bottom: 2rem;
     }
-
+  
     .cta a {
       display: inline-block;
-      padding: 0.95rem 2rem;
+      padding: 1rem 2.2rem;
       background-color: var(--accent-gold);
       color: #000;
       font-weight: 600;
       text-decoration: none;
-      border-radius: 7px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 8px;
+      transition: all 0.2s ease;
     }
-
+  
     .cta a:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
-
+  
     .lore-box {
       background: #ffffff;
-      border-left: 6px solid var(--deep-green);
-      padding: 1.8rem;
-      border-radius: 10px;
+      border-left: 6px solid var(--accent-gold);
+      padding: 2rem;
+      border-radius: 12px;
       max-width: 760px;
       margin: 2rem auto 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
-
+  
     footer {
       background-color: var(--deep-green-dark);
       color: var(--soft-gray);
       text-align: center;
-      padding: 2rem 1.2rem;
+      padding: 2.5rem 1.2rem;
       font-size: 0.9rem;
     }
-
+  
     footer a {
       color: var(--accent-gold);
       text-decoration: none;
     }
-
+  
     .social-links {
-      margin-top: 0.8rem;
+      margin-top: 1rem;
     }
-
+  
     .social-links a {
       display: inline-block;
       margin: 0 10px;
     }
-
+  
     .social-links img {
       width: 22px;
       height: 22px;
@@ -194,12 +207,13 @@
       opacity: 0.85;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
+  
     .social-links img:hover {
       transform: translateY(-2px);
       opacity: 1;
     }
   </style>
+
 
 </head>
 
@@ -215,6 +229,9 @@
     Model NASS is a high-fidelity legislative simulation set in the fictional
     Federal Republic of Mona — created to immerse young people in the realities
     of governance, ethical decision-making, and national responsibility.
+    <br><br>
+    This year’s emergency session confronts a rapidly escalating border crisis
+    threatening national stability.
   </p>
 </header>
 
@@ -229,7 +246,7 @@
   </a>
 </section>
 
-<section>
+<section class="alt">
   <h3>What Is the Federal Republic of Mona?</h3>
   <p>
     The Federal Republic of Mona is a fictional nation created solely for the
@@ -243,22 +260,43 @@
   </p>
 </section>
 
+<section class="bridge">
+  <h3>Why Model NASS Exists</h3>
+  <p>
+    Five years ago, Mona experienced a nationwide youth movement demanding
+    inclusion in governance. In response, the Civic Inclusion and Participatory
+    Governance Reform Act established Model NASS — a formal youth legislative
+    body designed to debate national issues and submit advisory resolutions to
+    the President and National Assembly.
+  </p>
+  <p>
+    Model NASS exists to test ideas, challenge assumptions, and prepare young
+    leaders to think like lawmakers.
+  </p>
+</section>
+
+
 <section>
-  <h3>The Boundary Crisis</h3>
+  <h3>The Tarsah–Ilen Boundary Crisis</h3>
   <div class="lore-box">
     <p>
-      A disputed border between two states, two peoples, and two faiths has
-      erupted again — this time over land rich in coltan, a mineral critical to
-      global technology.
+      Along the border of Darah State and Ilen State lies the Tarsah-Ilen Plains —
+      a territory long disputed over ancestry, identity, and faith.
     </p>
     <p>
-      As violence spreads and displacement grows, the Federal Government has
-      convened an emergency sitting of the Model National Assembly.
+      The recent discovery of massive coltan deposits — and a proposed foreign
+      investment deal — has reignited tensions. Violence has erupted, lives have
+      been lost, and displacement is growing.
+    </p>
+    <p>
+      In response, the President has formally requested an Emergency Session of
+      Model NASS to draft a youth-driven policy resolution.
     </p>
   </div>
 </section>
 
-<section>
+
+<section class="alt">
   <h3>Who Is This For?</h3>
   <p>
     Students and young professionals interested in governance, law, policy,
