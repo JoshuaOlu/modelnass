@@ -471,11 +471,52 @@
 
     @media (max-width: 640px) {
       nav { padding: 0.9rem 1.2rem; }
-      .nav-links li:not(:last-child) { display: none; }
+      
       .session-card-header { padding: 2rem 1.5rem 1.5rem; }
       .session-card-body { padding: 1.75rem 1.5rem; }
       .session-meta { gap: 1.2rem; }
       .next-section { padding: 2.5rem 1.5rem; }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--soft-gray);
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+
+      @media (max-width: 640px) {
+        .hamburger { display: flex; }
+
+        .nav-links {
+          display: none;
+          position: fixed;
+          top: 57px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: rgba(7, 40, 30, 0.98);
+          padding: 1.5rem 1.5rem;
+          gap: 1.2rem;
+          border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+          z-index: 99;
+        }
+
+        .nav-links.open { display: flex; }
+
+        .nav-links li { display: block; }
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
