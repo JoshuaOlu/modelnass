@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model NASS — The Checkmate Initiative</title>
+  <meta name="description" content="The Gender Equity in Leadership Act has arrived in Mona's legislature. Join the next Model NASS Emergency Session — coming October 2026." />
+  <link rel="canonical" href="https://modelnass.ng" />
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Open Graph. -->
+  <meta property="og:title" content="Model NASS — The Checkmate Initiative" />
+  <meta property="og:description" content="Institutionalising gender equity in Monan leadership. A polarising bill. A fractured assembly. 72 delegates to decide." />
+  <meta property="og:image" content="https://modelnass.ng/images/share-preview-v2.png" />
+  <meta property="og:url" content="https://modelnass.ng" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Model NASS — The Checkmate Initiative" />
+  <meta name="twitter:description" content="Institutionalising gender equity in Monan leadership. A polarising bill. A fractured assembly. 72 delegates to decide." />
+  <meta name="twitter:image" content="https://modelnass.ng/images/share-preview-v2.png" />
+
+  <style>
+    :root {
+      --deep-green: #0b3d2e;
+      --deep-green-dark: #07281e;
+      --deep-green-mid: #0f5040;
+      --off-white: #f4f6f5;
+      --parchment: #f9f6ef;
+      --soft-gray: #dfe6e3;
+      --accent-gold: #c9a24d;
+      --accent-gold-light: #e8c97a;
+      --text-dark: #1a1a1a;
+      --text-muted: #5a6b65;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--parchment);
+      color: var(--text-dark);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.7;
+    }
+
+    /* ── CHESS PATTERN UTILITY ── */
+    .chess-texture {
+      background-image:
+        repeating-conic-gradient(
+          rgba(255,255,255,0.03) 0% 25%,
+          transparent 0% 50%
+        );
+      background-size: 40px 40px;
+    }
+
+    /* ── NAV ── */
+    body > nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(7, 40, 30, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--off-white);
+    }
+
+    .nav-brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-brand span {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--soft-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-gold); }
+
+    .nav-links .register-link {
+      border: 1px solid var(--accent-gold);
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      color: var(--accent-gold);
+    }
+
+    .nav-links .register-link:hover {
+      background: rgba(201, 162, 77, 0.1);
+    }
+
+    .nav-links .archive-link {
+      border: 1px solid rgba(201, 162, 77, 0.5);
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      color: var(--accent-gold);
+    }
+
+    .nav-links .archive-link:hover {
+      background: rgba(201, 162, 77, 0.1);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background-color: var(--deep-green-dark);
+      background-image:
+        repeating-conic-gradient(
+          rgba(255,255,255,0.025) 0% 25%,
+          transparent 0% 50%
+        );
+      background-size: 48px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 1.5rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gold gradient glow from bottom */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 300px;
+      background: radial-gradient(ellipse at center, rgba(201,162,77,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      max-width: 90px;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .hero-eyebrow {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      max-width: 820px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent-gold);
+    }
+
+    .hero-subtitle {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--soft-gray);
+      font-weight: 400;
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+      line-height: 1.6;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--accent-gold);
+      margin: 2.5rem auto;
+      opacity: 0.7;
+    }
+
+    .hero-meta {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      color: rgba(223, 230, 227, 0.55);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      background: var(--accent-gold);
+      color: #000;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,162,77,0.35);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      background: transparent;
+      color: var(--soft-gray);
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border: 1px solid rgba(223,230,227,0.3);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(223,230,227,0.7);
+      color: #fff;
+    }
+
+    /* ── SCROLL HINT ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(223,230,227,0.35);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(4px); }
+    }
+
+    /* ── CONTENT WRAPPER ── */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-eyebrow {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--deep-green);
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #3a3a3a;
+      max-width: 680px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── THE BILL ── */
+    .bill-section {
+      background: var(--deep-green);
+      color: var(--off-white);
+      padding: 5rem 1.5rem;
+    }
+
+    .bill-section .section-eyebrow { color: var(--accent-gold); }
+
+    .bill-section h2 {
+      color: #ffffff;
+      max-width: 680px;
+    }
+
+    .bill-section p {
+      color: rgba(244,246,245,0.82);
+    }
+
+    .fault-lines {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fault-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--accent-gold);
+      border-radius: 10px;
+      padding: 1.75rem;
+      text-align: left;
+    }
+
+    .fault-card .fault-label {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .fault-card p {
+      font-size: 0.97rem;
+      color: rgba(244,246,245,0.8);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── WHAT IS MONA ── */
+    .mona-section {
+      background: #ffffff;
+      padding: 5rem 1.5rem;
+    }
+
+    .mona-section h2 { color: var(--deep-green); }
+
+    /* ── WHO IT'S FOR ── */
+    .for-section {
+      background: var(--parchment);
+      padding: 5rem 1.5rem;
+    }
+
+    .for-section h2 { color: var(--deep-green); }
+
+    .for-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .for-card {
+      background: #fff;
+      border: 1px solid var(--soft-gray);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .for-card .for-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .for-card p {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── QUOTE PULL ── */
+    .quote-section {
+      background: var(--deep-green-dark);
+      padding: 5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '\201C';
+      position: absolute;
+      top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18rem;
+      color: rgba(201,162,77,0.06);
+      font-family: Georgia, serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-style: italic;
+      color: #ffffff;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .quote-attr {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--parchment);
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--deep-green);
+      letter-spacing: -0.02em;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+      line-height: 1.2;
+    }
+
+    .final-cta p {
+      color: var(--text-muted);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .spots-badge {
+      display: inline-block;
+      background: rgba(11,61,46,0.08);
+      border: 1px solid rgba(11,61,46,0.15);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--deep-green);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep-green-dark);
+      color: var(--soft-gray);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    footer a:hover { opacity: 0.75; }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: var(--soft-gray);
+      font-size: 0.83rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-nav a:hover { color: var(--accent-gold); }
+
+    .social-links {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(223,230,227,0.2);
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      border-color: var(--accent-gold);
+      background: rgba(201,162,77,0.1);
+      opacity: 1;
+    }
+
+    .social-links img {
+      width: 16px;
+      height: 16px;
+      filter: invert(1);
+      opacity: 0.75;
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(201,162,77,0.3);
+      margin: 1.5rem auto;
+    }
+
+    /* ── CENTER HELPERS ── */
+    .centered { text-align: center; }
+    .centered h2 { margin-left: auto; margin-right: auto; }
+    .centered p { margin-left: auto; margin-right: auto; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      
+      .fault-lines { grid-template-columns: 1fr; }
+      .for-cards { grid-template-columns: 1fr 1fr; }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--soft-gray);
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+
+      @media (max-width: 640px) {
+        .hamburger { display: flex; }
+
+        .nav-links {
+          display: none;
+          position: fixed;
+          top: 57px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          background: rgba(7, 40, 30, 0.98);
+          padding: 1.5rem 1.5rem;
+          gap: 1.2rem;
+          border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+          z-index: 99;
+        }
+
+        .nav-links.open { display: flex; }
+
+        .nav-links li { display: block; }
+      }
+    }
+
+    @media (max-width: 400px) {
+      .for-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-arrow { animation: none; }
+      .btn-primary:hover, .btn-ghost:hover { transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="nav-brand" href="/">
+    <img src="images/logo.png" alt="Model NASS">
+    <span>Model NASS</span>
+  </a>
+  <button class="hamburger" aria-label="Toggle menu" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#the-bill">Current Session</a></li>
+    <li><a href="/past-sessions">Past Sessions</a></li>
+    <li><a href="/team">Our Team</a></li>
+    <li><a href="https://forms.gle/Zvts6LHauWwpNubi7" target="_blank" class="register-link">Register Now</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero chess-texture">
+  <img class="hero-logo" src="images/logo.png" alt="Model NASS Logo">
+
+  <p class="hero-eyebrow">Model National Assembly · October 2026</p>
+
+  <h1 class="hero-title">
+    The <em>Checkmate</em><br>Initiative
+  </h1>
+
+  <p class="hero-subtitle">
+    Institutionalising gender equity in Monan leadership.<br>
+    A polarising bill. A fractured chamber. 72 delegates to decide.
+  </p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-meta">Date to be announced · Registration now open</p>
+
+  <div class="hero-cta-group">
+    <a href="https://forms.gle/Zvts6LHauWwpNubi7" target="_blank" class="btn-primary">
+      Register Your Interest
+    </a>
+    <a href="#the-bill" class="btn-ghost">
+      What's at stake →
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+
+<!-- ── THE BILL ── -->
+<section class="bill-section centered" id="the-bill">
+  <div class="content">
+    <span class="section-eyebrow">The Session Brief</span>
+    <h2>The Gender Equity in Leadership Act has arrived on the floor.</h2>
+    <p>
+      The bill proposes mandatory gender equity targets across every sector of Monan society —
+      from government ministries and state agencies to private companies with government contracts,
+      and including religious organisations. Proponents call it a historic correction.
+      Critics call it overreach.
+    </p>
+    <p>
+      For the first time, the chamber must answer a question that has divided Mona for a generation:
+      <strong style="color: #fff;">Who decides who leads?</strong>
+    </p>
+  </div>
+
+  <div class="fault-lines">
+    <div class="fault-card">
+      <div class="fault-label">The Reformers</div>
+      <p>Decades of documented exclusion demand a structural response. Voluntary targets have failed. The time for legislation is now.</p>
+    </div>
+    <div class="fault-card">
+      <div class="fault-label">The Traditionalists</div>
+      <p>Forcing equity by quota undermines merit and violates the autonomy of faith communities and private institutions alike.</p>
+    </div>
+    <div class="fault-card">
+      <div class="fault-label">The Pragmatists</div>
+      <p>The bill's ambition is right but its reach is too broad. What amendments could make it pass — and what would that cost?</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHAT IS MONA ── -->
+<section class="mona-section centered" id="about">
+  <div class="content">
+    <span class="section-eyebrow">The Setting</span>
+    <h2>The Federal Republic of Mona</h2>
+    <p>
+      Mona is a fictional nation created specifically for the Model NASS simulation.
+      It gives delegates a neutral but realistic arena to grapple with real tensions —
+      without the noise of real-world political allegiances.
+    </p>
+    <p>
+      Model NASS itself was established under Mona's Civic Inclusion and Participatory
+      Governance Reform Act, five years after a nationwide youth movement demanded a seat
+      at the table. It is a formal youth legislative body with the power to submit
+      advisory resolutions directly to the President and National Assembly.
+    </p>
+    <p>
+      The problems are fictional. The thinking required is entirely real.
+    </p>
+  </div>
+</section>
+
+
+<!-- ── PULL QUOTE ── -->
+<section class="quote-section">
+  <p class="quote-text">
+    "The simulation is not preparation for the real thing. It is the real thing — just in a room where you're allowed to be wrong."
+  </p>
+  <p class="quote-attr">— The Team, March 28 Emergency Session</p>
+</section>
+
+
+<!-- ── WHO IT'S FOR ── -->
+<section class="for-section centered">
+  <div class="content">
+    <span class="section-eyebrow">Who Should Apply</span>
+    <h2>You don't need experience. You need commitment.</h2>
+    <p>
+      Model NASS is open to students and young professionals who are willing
+      to engage seriously with complex, uncomfortable ideas.
+    </p>
+  </div>
+  <div class="for-cards">
+    <div class="for-card">
+      <span class="for-icon">⚖️</span>
+      <p>Interested in law, policy, or governance</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">🗣️</span>
+      <p>Strong in debate, negotiation, or persuasion</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">📚</span>
+      <p>Research-minded, curious about social systems</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">🌍</span>
+      <p>Passionate about equity, inclusion, and civic life</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <div class="spots-badge">72 delegate seats available</div>
+  <h2>The move is yours.</h2>
+  <p>
+    The session date will be announced in October 2026.
+    Register your interest now so you don't miss the call.
+  </p>
+  <a href="https://forms.gle/Zvts6LHauWwpNubi7" target="_blank" class="btn-primary">
+    Register Now
+  </a>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <nav class="footer-nav">
+    <a href="/">Current Session</a>
+    <a href="/past-sessions">Past Sessions</a>
+    <a href="/team">Our Team</a>
+    <a href="https://careforknowledge.org" target="_blank">Care for Knowledge</a>
+  </nav>
+
+  <div class="footer-divider"></div>
+
+  <p>© 2026 Model NASS · A Care for Knowledge Initiative</p>
+
+  <div class="social-links">
+    <a href="https://instagram.com/modelnassng" target="_blank" aria-label="Instagram">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="">
+    </a>
+    <a href="https://x.com/modelnassng" target="_blank" aria-label="X / Twitter">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="">
+    </a>
+    <a href="https://linkedin.com/company/modelnassng" target="_blank" aria-label="LinkedIn">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="">
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>

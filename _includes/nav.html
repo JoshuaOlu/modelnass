@@ -1,0 +1,18 @@
+<nav>
+  <a class="nav-brand" href="/">
+    <img src="/images/logo.png" alt="Model NASS">
+    <span>Model NASS</span>
+  </a>
+  <button class="hamburger" aria-label="Toggle menu"
+    onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+    <li><a href="/#the-bill">Current Session</a></li>
+    <li><a href="/past-sessions/" {% if page.url contains 'past-sessions' %}class="active"{% endif %}>Past Sessions</a></li>
+    <li><a href="/team/" {% if page.url contains 'team' %}class="active"{% endif %}>Our Team</a></li>
+    <li><a href="{{ site.monapedia_url }}" target="_blank" class="nav-monapedia">Monapedia ↗</a></li>
+    <li><a href="{{ site.register_url }}" target="_blank" class="nav-cta">Register Now</a></li>
+  </ul>
+</nav>
