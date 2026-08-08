@@ -15,7 +15,7 @@ exclude:
   - node_modules
 
 # Site-wide data you can reference with {{ site.register_url }} etc.
-register_url: "https://forms.gle/Zvts6LHauWwpNubi7"
+register_url: "https://docs.google.com/forms/d/e/1FAIpQLSerUIeoYRMUCbqwHpb10WnGDTcPHaQRcZwDY5bL9NM54lUycw/viewform?usp=dialog"
 monapedia_url: "https://wiki.modelnass.ng"
 instagram_url: "https://instagram.com/modelnassng"
 twitter_url: "https://x.com/modelnassng"
