@@ -1,0 +1,59 @@
+# ═══════════════════════════════════════════════════════════════
+# PAST SESSIONS ARCHIVE
+# ───────────────────────────────────────────────────────────────
+# Add new completed sessions at the TOP of this list.
+# The past-sessions page renders them in the order they appear here.
+#
+# FIELD REFERENCE
+# ───────────────────────────────────────────────────────────────
+# number        Session number (e.g. 261)
+# name          Full session name
+# tag           Short label shown as a badge (e.g. "March 28 Emergency Session")
+# date          Human-readable date (e.g. "March 28, 2026")
+# delegates     Number of delegates selected
+# setting       Always "Federal Republic of Mona" unless otherwise
+# theme         One-line theme descriptor for the meta row
+#
+# description   List of paragraphs. Each item becomes a <p> block.
+#
+# highlights    List of short theme tags shown as pills.
+#
+# video_id      YouTube video ID only (the part after ?v=).
+#               Leave blank ("") if no recording is available yet.
+#
+# report_url    Full URL to the session report (PDF, Drive link, etc.).
+#               Leave blank ("") if the report is not yet published.
+#
+# photos        List of image paths relative to the site root.
+#               Store images in /images/sessions/<number>/.
+#               Leave as an empty list ([]) if no photos yet.
+# ═══════════════════════════════════════════════════════════════
+
+- number: 261
+  name: "The Boundary Proposal: Who Owns the Future?"
+  tag: "March 28 Emergency Session"
+  date: "March 28, 2026"
+  delegates: 36
+  setting: "Federal Republic of Mona"
+  theme: "Territorial conflict · Resource rights"
+
+  description:
+    - "The inaugural Model NASS emergency session placed 36 delegates at the centre of the Tarsah-Ilen Plains crisis — a long-disputed border territory between Ugwulore State and Mineral Land State where the discovery of massive coltan deposits ignited violence, displacement, and a fractured national conversation about ancestry, faith, and sovereign wealth."
+    - "Delegates were called to draft a youth-driven policy resolution at the direct request of Mona's President. The session tested their ability to negotiate across identity lines, reconcile competing interests, and produce a resolution that could survive a divided chamber."
+
+  highlights:
+    - "Territorial sovereignty"
+    - "Natural resource governance"
+    - "Identity and faith in policy"
+    - "Emergency legislative procedure"
+    - "Conflict mediation"
+    - "Foreign investment ethics"
+
+  video_id: "QXLZz5Lr7pg"
+  report_url: ""
+
+  photos: []
+  # When photos are ready, add them like this:
+  # photos:
+  #   - "/images/sessions/261/photo-01.jpg"
+  #   - "/images/sessions/261/photo-02.jpg"

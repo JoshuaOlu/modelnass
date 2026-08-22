@@ -1,0 +1,59 @@
+# ═══════════════════════════════════════════════════════════════
+# STEERING COMMITTEE
+# ───────────────────────────────────────────────────────────────
+# The team page loops over this file.
+# The member with featured: true gets the large chairperson card.
+# All others appear in the grid below.
+#
+# FIELD REFERENCE
+# ───────────────────────────────────────────────────────────────
+# name        Full name
+# role        Role title shown as a badge
+# bio         One paragraph bio
+# photo       Path to photo relative to site root (in /images/team/)
+# linkedin    Full LinkedIn profile URL. Omit or leave blank ("") to hide the link.
+# featured    Set to true for the chairperson card. Only one person should have this.
+# ═══════════════════════════════════════════════════════════════
+
+- name: "Joshua Olunlade"
+  role: "Chairperson"
+  bio: "Provides overall leadership, strategic direction, and governance oversight for the team. Joshua ensures that the initiative remains aligned with its vision, mission, and long-term objectives."
+  photo: "/images/team/joshua-olunlade.jpg"
+  linkedin: "https://www.linkedin.com/in/joshuaolunlade/"
+  featured: true
+
+- name: "Emmanuel Ogunniyi"
+  role: "General Secretary"
+  bio: "Serves as the administrative and operational lead of the initiative. He administratively leads the team, coordinates internal processes, manages records, and supports other team members."
+  photo: "/images/team/emmanuel-ogunniyi.jpg"
+  linkedin: "https://www.linkedin.com/in/emmanuel-o-ogunniyi/"
+
+- name: "Oluwafunmilade Adewale"
+  role: "Content Development"
+  bio: "Oluwafunmilade leads the creation of educational and simulation materials — including legislative documents, scenarios, delegate resources, and event content."
+  photo: "/images/team/oluwafunmilade-adewalee.png"
+  linkedin: "https://www.linkedin.com/in/oluwafunmilade-adewale-6530971b3/"
+
+- name: "Israel Oladejo"
+  role: "Partnerships & Comms"
+  bio: "Israel leads stakeholder engagement, partnerships, external relationships, and communication strategies to strengthen the reach and impact of Model NASS."
+  photo: "/images/team/israel-oladejo.png"
+  linkedin: "https://www.linkedin.com/in/israel-oladejo/"
+
+- name: "Feyifunmi Olugbile"
+  role: "Lore & Continuity"
+  bio: "Feyi maintains the fictional world of Mona — ensuring consistency in its history, institutions, characters, and ongoing development across Model NASS simulations."
+  photo: "/images/team/feyifunmi-olugbile.jpg"
+  linkedin: "https://www.linkedin.com/in/feyifunmi-olugbile-2ba7a5333/"
+
+- name: "Favour Nzeribe"
+  role: "Research & Reporting"
+  bio: "Favour leads research activities connected to Model NASS — including participant studies, documentation, evaluation, and publication of reports from Model NASS activities."
+  photo: "/images/favour-nzeribe.png"
+  linkedin: ""
+
+- name: "Janet Fasoro"
+  role: "Social Media"
+  bio: "Janet manages Model NASS's digital presence, online storytelling, audience engagement, and social media communication."
+  photo: "/images/team/janet-fasoro.jpg"
+  linkedin: "https://www.linkedin.com/in/janet-fasoro/"

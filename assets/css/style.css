@@ -640,3 +640,63 @@ footer a:hover { opacity: 0.75; }
   .btn-ghost:hover       { transform: none; }
   .member-card:hover     { transform: none; }
 }
+
+/* ══════════════════════════
+   SESSION LINK BUTTONS
+   (report + YouTube links above the embed)
+══════════════════════════ */
+.session-links {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+}
+.session-link-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em;
+  text-decoration: none; padding: 0.55rem 1.1rem;
+  border-radius: 6px; transition: all 0.2s;
+}
+.session-link-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+.session-link-report {
+  background: rgba(11,61,46,0.07); color: var(--deep-green);
+  border: 1px solid rgba(11,61,46,0.2);
+}
+.session-link-report:hover {
+  background: var(--deep-green); color: var(--accent-gold);
+  border-color: var(--deep-green);
+}
+
+.session-link-video {
+  background: #ff0000; color: #fff; border: 1px solid transparent;
+}
+.session-link-video:hover { background: #cc0000; }
+
+/* ══════════════════════════
+   SESSION PHOTO GALLERY
+══════════════════════════ */
+.gallery-label {
+  font-family: "Inter", system-ui, sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+  margin: 1.5rem 0 0.75rem;
+}
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.gallery-item {
+  display: block; border-radius: 8px; overflow: hidden;
+  aspect-ratio: 4 / 3; background: var(--soft-gray);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.gallery-item:hover { opacity: 0.88; transform: scale(1.02); }
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+@media (max-width: 640px) {
+  .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+  .session-links { flex-direction: column; }
+  .session-link-btn { justify-content: center; }
+}

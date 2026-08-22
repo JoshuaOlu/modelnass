@@ -1,8 +1,15 @@
 ---
 layout: base
 title: Past Sessions
-description: Archive of Model NASS sessions. Watch the March 28 Emergency Session — The Boundary Proposal.
+description: Archive of Model NASS sessions — the briefs, the debates, and the decisions delegates made under pressure.
 ---
+
+{% assign cur = site.data.current_session %}
+{% if cur.register_url and cur.register_url != "" %}
+  {% assign reg_url = cur.register_url %}
+{% else %}
+  {% assign reg_url = site.register_url %}
+{% endif %}
 
 <!-- ── PAGE HEADER ── -->
 <header class="page-header">
@@ -19,80 +26,115 @@ description: Archive of Model NASS sessions. Watch the March 28 Emergency Sessio
 <!-- ── MAIN ── -->
 <main>
 
-  <!-- SESSION 261 -->
+  {% for session in site.data.sessions %}
   <article class="session-card">
+
+    <!-- CARD HEADER -->
     <div class="session-card-header">
       <div>
-        <div class="session-number">Session 261</div>
-        <h2 class="session-name">The Boundary Proposal:<br>Who Owns the Future?</h2>
+        <div class="session-number">Session {{ session.number }}</div>
+        <h2 class="session-name">{{ session.name }}</h2>
       </div>
-      <span class="session-tag">March 28 Emergency Session</span>
+      {% if session.tag %}
+      <span class="session-tag">{{ session.tag }}</span>
+      {% endif %}
     </div>
 
+    <!-- CARD BODY -->
     <div class="session-card-body">
+
+      <!-- META ROW -->
       <div class="session-meta">
         <div class="meta-item">
           <span class="meta-label">Date</span>
-          <span class="meta-value">March 28, 2026</span>
+          <span class="meta-value">{{ session.date }}</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Delegates</span>
-          <span class="meta-value">36 selected</span>
+          <span class="meta-value">{{ session.delegates }} selected</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Setting</span>
-          <span class="meta-value">Federal Republic of Mona</span>
+          <span class="meta-value">{{ session.setting }}</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Theme</span>
-          <span class="meta-value">Territorial conflict · Resource rights</span>
+          <span class="meta-value">{{ session.theme }}</span>
         </div>
       </div>
 
-      <p class="session-description">
-        The inaugural Model NASS emergency session placed 36 delegates at the centre
-        of the Tarsah-Ilen Plains crisis — a long-disputed border territory between
-        Ugwulore State and Mineral Land State where the discovery of massive coltan
-        deposits ignited violence, displacement, and a fractured national conversation
-        about ancestry, faith, and sovereign wealth.
-      </p>
-      <p class="session-description">
-        Delegates were called to draft a youth-driven policy resolution at the direct
-        request of Mona's President. The session tested their ability to negotiate
-        across identity lines, reconcile competing interests, and produce a resolution
-        that could survive a divided chamber.
-      </p>
+      <!-- DESCRIPTION -->
+      {% for para in session.description %}
+      <p class="session-description">{{ para }}</p>
+      {% endfor %}
 
+      <!-- SESSION LINKS (report + video) -->
+      {% assign has_report = false %}
+      {% assign has_video  = false %}
+      {% if session.report_url and session.report_url != "" %}{% assign has_report = true %}{% endif %}
+      {% if session.video_id  and session.video_id  != "" %}{% assign has_video  = true %}{% endif %}
+
+      {% if has_report or has_video %}
+      <div class="session-links">
+        {% if has_report %}
+        <a href="{{ session.report_url }}" target="_blank" class="session-link-btn session-link-report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Read Session Report
+        </a>
+        {% endif %}
+        {% if has_video %}
+        <a href="https://www.youtube.com/watch?v={{ session.video_id }}" target="_blank" class="session-link-btn session-link-video">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Watch on YouTube
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- VIDEO EMBED -->
+      {% if has_video %}
       <div class="video-container">
         <iframe
-          src="https://www.youtube.com/embed/QXLZz5Lr7pg"
-          title="Model NASS Session 261 — The Boundary Proposal"
+          src="https://www.youtube.com/embed/{{ session.video_id }}"
+          title="Model NASS Session {{ session.number }} — {{ session.name }}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>
+      {% endif %}
 
+      <!-- PHOTO GALLERY -->
+      {% if session.photos and session.photos.size > 0 %}
+      <div class="gallery-label">Session Photos</div>
+      <div class="photo-gallery">
+        {% for photo in session.photos %}
+        <a href="{{ photo }}" target="_blank" class="gallery-item">
+          <img src="{{ photo }}" alt="Session {{ session.number }} photo {{ forloop.index }}" loading="lazy">
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- THEMES -->
+      {% if session.highlights and session.highlights.size > 0 %}
       <div class="highlights-label">Themes explored</div>
       <ul class="highlights-list">
-        <li>Territorial sovereignty</li>
-        <li>Natural resource governance</li>
-        <li>Identity and faith in policy</li>
-        <li>Emergency legislative procedure</li>
-        <li>Conflict mediation</li>
-        <li>Foreign investment ethics</li>
+        {% for item in session.highlights %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
-    </div>
+      {% endif %}
+
+    </div><!-- /session-card-body -->
   </article>
+  {% endfor %}
 
   <!-- NEXT SESSION PROMO -->
   <div class="next-section">
-    <span class="section-eyebrow">Coming Next · October 2026</span>
-    <h2>The Checkmate Initiative</h2>
-    <p>
-      The Gender Equity in Leadership Act has arrived on the floor.
-      72 delegates. One polarising bill. No easy answers.
-    </p>
-    <a href="{{ site.register_url }}" target="_blank" class="btn-primary">Register for Session 262</a>
+    <span class="section-eyebrow">Coming Next · Session {{ cur.number }}</span>
+    <h2>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }}</h2>
+    <p>{{ cur.tagline }} {{ cur.subtitle }}</p>
+    <a href="{{ reg_url }}" target="_blank" class="btn-primary">Register for Session {{ cur.number }}</a>
   </div>
 
 </main>
