@@ -10,6 +10,7 @@ description: Meet the Model NASS Steering Committee — the team providing strat
 {% else %}
   {% assign reg_url = site.register_url %}
 {% endif %}
+{% assign int_url = site.interest_url %}
 
 <!-- LinkedIn icon SVG — defined once, reused via use -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -130,15 +131,24 @@ description: Meet the Model NASS Steering Committee — the team providing strat
   </div><!-- /team-section-inner -->
 </section>
 
-<!-- ── REGISTER CTA ── -->
+<!-- ── CTA ── -->
 <div class="cta-wrapper">
   <div class="cta-section">
-    <span class="section-eyebrow">Session {{ cur.number }} · {{ cur.eyebrow | split: "·" | last | strip }}</span>
+    {% if cur.status == "recruiting" %}
+    <span class="section-eyebrow">Session {{ cur.number }} · Now Recruiting</span>
     <h2>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }} awaits.</h2>
-    <p>
-      {{ cur.delegate_count }} delegate seats. {{ cur.tagline }}
-      Register your interest now and be first to hear when the date drops.
-    </p>
+    <p>{{ cur.delegate_count }} delegate seats. {{ cur.tagline }} Register your interest now.</p>
     <a href="{{ reg_url }}" target="_blank" class="btn-primary">Register Now</a>
+    {% elsif cur.status == "upcoming" %}
+    <span class="section-eyebrow">Session {{ cur.number }} · Coming Up</span>
+    <h2>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }} is happening.</h2>
+    <p>Applications are closed for this session. Join the mailing list to be first in line for the next one.</p>
+    <a href="{{ int_url }}" target="_blank" class="btn-primary">Join the Mailing List</a>
+    {% else %}
+    <span class="section-eyebrow">Stay Connected</span>
+    <h2>Be first to know when the next session opens.</h2>
+    <p>No active recruitment right now. Leave your details and we'll reach out as soon as applications open.</p>
+    <a href="{{ int_url }}" target="_blank" class="btn-primary">Express Interest</a>
+    {% endif %}
   </div>
 </div>
