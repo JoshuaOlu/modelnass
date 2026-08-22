@@ -10,54 +10,84 @@ Built with Jekyll and hosted on GitHub Pages.
 
 ```
 modelnass/
-├── _data/                  ← ALL routine updates happen here
-│   ├── current_session.yml ← Controls the entire homepage
-│   ├── sessions.yml        ← Archive of every completed session
-│   └── team.yml            ← Steering committee members
+├── _data/                   ← ALL routine updates happen here
+│   ├── current_session.yml  ← Controls the homepage + nav CTA
+│   ├── sessions.yml         ← Archive of every completed session
+│   ├── team.yml             ← Steering committee members
+│   └── about.yml            ← Programme description (rarely changes)
 │
-├── _includes/              ← Shared HTML fragments (nav, footer, etc.)
-├── _layouts/               ← Page shells (base.html wraps every page)
-├── assets/css/style.css    ← All styles
+├── _includes/               ← Shared HTML fragments (nav, footer, etc.)
+├── _layouts/                ← Page shells (base.html wraps every page)
+├── assets/css/style.css     ← All styles
 │
 ├── images/
-│   ├── team/               ← Team member photos
+│   ├── team/                ← Team member photos
 │   └── sessions/
-│       ├── 261/            ← Photos for Session 261
-│       └── 262/            ← Photos for Session 262 (create when ready)
+│       ├── 261/             ← Photos for Session 261
+│       └── 262/             ← Photos for Session 262 (create when ready)
 │
-├── index.html              ← Homepage template (do not edit content here)
-├── past-sessions/index.html← Archive page template
-└── team/index.html         ← Team page template
+├── index.html               ← Homepage template — do not edit content here
+├── about/index.html         ← About page template — do not edit content here
+├── past-sessions/index.html ← Archive page template
+└── team/index.html          ← Team page template
 ```
 
-**The three page HTML files are templates — you should rarely need to touch them.** All content lives in `_data/`.
+**The HTML files are templates. All content lives in `_data/`.
+You should almost never need to open an HTML file.**
 
 ---
 
-## Routine task: promoting a new session on the homepage
+## The site has four modes
 
-When you're ready to advertise a new upcoming session:
+The homepage changes entirely depending on the `status` field in
+`_data/current_session.yml`. Set it to the right value for what is
+currently happening, and the homepage, nav CTA, and past-sessions
+banner all update automatically.
 
-1. **Open `_data/current_session.yml`** and update every field:
+| `status` | When to use | Nav CTA | Homepage hero |
+|---|---|---|---|
+| `recruiting` | Applications are open | Register Now | Full session brief + factions + register CTA |
+| `upcoming` | Applications closed, session approaching | Stay in the Loop | Session confirmed, delegates selected, mailing list CTA |
+| `just_happened` | Session done, next not yet announced | Express Interest | "Session X just happened" — links to report/video |
+| `between` | Nothing imminent | Express Interest | Evergreen programme description + past sessions |
+
+---
+
+## Routine task: starting a new recruitment cycle
+
+1. **Update `_data/current_session.yml`** — fill in all fields:
+   - `status: "recruiting"`
    - Session number, name, title parts, tagline, subtitle
-   - `date_text` (e.g. `"Saturday 14 March 2026 · Lagos"`)
+   - `date_text` (e.g. `"Saturday 14 March · Lagos"`)
    - `delegate_count`
    - `brief_heading` and `brief_body` paragraphs
-   - `factions` (the fault-line cards — add, remove, or rename as needed)
-   - `og_title`, `og_description`, `og_image` (for social sharing)
+   - `factions` (add, remove, or rename as needed)
+   - `og_title`, `og_description`, `og_image`
    - `cta_heading` and `cta_body`
 
-2. **Replace the OG/share image** at the path you set in `og_image` (usually `/images/share-preview-v2.png`) with the new session artwork.
+2. **Replace the OG/share image** at the path in `og_image`.
 
-3. **Update the registration link** — either edit `register_url` in this file, or update the site-wide default in `_config.yml`.
+3. **Check `register_url`** — either set it in `current_session.yml`,
+   or update the site-wide default in `_config.yml`.
 
-That's it. The homepage, the "Coming Next" block on the archive page, and the CTA on the team page all update automatically.
+---
+
+## Routine task: applications have closed, session is confirmed
+
+1. In `_data/current_session.yml`:
+   - Set `status: "upcoming"`
+   - Set `confirmed_date` (e.g. `"Saturday, 18 October 2026"`)
+   - Set `confirmed_venue` (e.g. `"Civic Centre, Lagos"`) — or leave blank
+
+The homepage hero switches to "Applications closed · Session confirmed".
+The session brief section stays visible so visitors can read what delegates will debate.
+The nav CTA becomes "Stay in the Loop" pointing to the mailing list form.
 
 ---
 
 ## Routine task: archiving a completed session
 
-After a session ends, add it to the **top** of `_data/sessions.yml`. Copy and paste the block below, fill in every field, and save.
+1. **Add the session to the top of `_data/sessions.yml`**:
 
 ```yaml
 - number: 262
@@ -69,7 +99,7 @@ After a session ends, add it to the **top** of `_data/sessions.yml`. Copy and pa
   theme: "Gender equity · Legislative reform"
 
   description:
-    - "First paragraph about the session..."
+    - "First paragraph about what happened..."
     - "Second paragraph if needed."
 
   highlights:
@@ -77,45 +107,50 @@ After a session ends, add it to the **top** of `_data/sessions.yml`. Copy and pa
     - "Faith and public policy"
     - "Amendment procedures"
 
-  video_id: "YOUTUBE_ID_HERE"   # the ID after ?v= in the YouTube URL
-  report_url: "https://..."     # link to the published report
+  video_id: "YOUTUBE_ID_HERE"
+  report_url: "https://..."
 
   photos:
     - "/images/sessions/262/photo-01.jpg"
     - "/images/sessions/262/photo-02.jpg"
 ```
 
-**Leave `video_id` or `report_url` as `""` if they're not ready yet** — the site hides those elements automatically and shows them as soon as you add the values.
+2. **Set `status: "just_happened"`** in `_data/current_session.yml`.
 
-**Leave `photos` as `[]` if photos aren't ready yet** — the gallery section is hidden until photos are added.
+The homepage hero automatically reads the name, delegate count, date,
+and theme from the top entry in `sessions.yml` — no extra fields to fill.
+
+3. **When ready to move to a full between-sessions holding state**,
+   set `status: "between"`.
+
+---
+
+## Routine task: leaving fields blank
+
+These fields in `sessions.yml` hide their sections automatically when blank:
+
+- `video_id: ""` → no video embed or YouTube button
+- `report_url: ""` → no report button
+- `photos: []` → no photo gallery
+
+Fill them in whenever the content is ready — the sections appear immediately.
 
 ---
 
 ## Adding session photos
 
-1. Create a folder: `images/sessions/<session-number>/`  
-   e.g. `images/sessions/262/`
+1. Create: `images/sessions/<number>/`
+2. Add photos named `photo-01.jpg`, `photo-02.jpg`, etc. (JPG or PNG)
+3. List paths in `sessions.yml` under that session's `photos:` key
 
-2. Name your photos clearly: `photo-01.jpg`, `photo-02.jpg`, etc. (JPG or PNG, both fine.)
-
-3. Add the paths to `_data/sessions.yml` under the correct session's `photos:` list:
-
-```yaml
-photos:
-  - "/images/sessions/262/photo-01.jpg"
-  - "/images/sessions/262/photo-02.jpg"
-  - "/images/sessions/262/photo-03.jpg"
-```
-
-Photos display in the order listed. They link to the full image when clicked.
-
-**Recommended photo dimensions:** 1200×900px (4:3 ratio) for clean display in the grid.
+**Recommended size:** 1200×900px (4:3 ratio).
+Photos link to the full image when clicked.
 
 ---
 
 ## Adding or updating team members
 
-Open `_data/team.yml`. Each member is a block:
+Edit `_data/team.yml`. Each member block:
 
 ```yaml
 - name: "Full Name"
@@ -123,25 +158,31 @@ Open `_data/team.yml`. Each member is a block:
   bio: "One paragraph bio."
   photo: "/images/team/firstname-lastname.jpg"
   linkedin: "https://linkedin.com/in/username/"
-  featured: true   # ONLY for the Chairperson — remove this line for all others
+  featured: true   # ONLY for the Chairperson — omit for all others
 ```
 
-- Add new members by pasting a new block at the bottom (or wherever in the order you want them in the grid).
-- To remove a member, delete their block.
-- To update a bio, photo, or LinkedIn, just edit the relevant field.
-- Photos go in `/images/team/`. Use the person's name as the filename.
-- If someone has no LinkedIn, set `linkedin: ""` — the link will be hidden.
-
-The `featured: true` line on one member renders them in the large Chairperson card at the top. Only one person should have this.
+- Photos go in `/images/team/`
+- Set `linkedin: ""` to hide the LinkedIn link
+- Only one person should have `featured: true`
 
 ---
 
-## Updating social links, registration URL, or Monapedia URL
+## Updating the mailing list / interest form URL
 
-These site-wide defaults live in `_config.yml`:
+When no active recruitment is running, the site points visitors to a
+"stay in the loop" Google Form. Set the URL in `_config.yml`:
 
 ```yaml
-register_url: "https://..."
+interest_url: "https://docs.google.com/forms/YOUR_FORM_URL"
+```
+
+---
+
+## Updating social links or Monapedia URL
+
+All in `_config.yml`:
+
+```yaml
 monapedia_url: "https://wiki.modelnass.ng"
 instagram_url: "https://instagram.com/modelnassng"
 twitter_url:   "https://x.com/modelnassng"
@@ -149,7 +190,14 @@ linkedin_url:  "https://linkedin.com/company/modelnassng"
 cfk_url:       "https://careforknowledge.org"
 ```
 
-Note: the registration URL can also be overridden per-session in `_data/current_session.yml` — useful if you use a different form each time. If `register_url` is set there, it takes priority. If it's left blank, the site-wide default from `_config.yml` is used.
+---
+
+## Updating the About page content
+
+The About page is driven by `_data/about.yml`. You should rarely need
+to touch it — it describes the programme itself, which doesn't change
+between sessions. Edit it if the programme's framing, the delegate
+experience, or the long-term vision needs updating.
 
 ---
 
@@ -160,10 +208,10 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Then open `http://localhost:4000`.
+Open `http://localhost:4000`.
 
 ---
 
 ## Deployment
 
-The site deploys automatically to GitHub Pages on every push to `main`. No build step needed — just commit and push.
+Pushes to `main` deploy automatically via GitHub Pages. No build step needed.

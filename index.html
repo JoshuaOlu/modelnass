@@ -9,14 +9,24 @@ og_image: "{{ site.data.current_session.og_image }}"
 og_url: "https://modelnass.ng"
 ---
 
-{% assign s = site.data.current_session %}
+{% assign s    = site.data.current_session %}
+{% assign ab   = site.data.about %}
+{% assign latest = site.data.sessions[0] %}
+
 {% if s.register_url and s.register_url != "" %}
   {% assign reg_url = s.register_url %}
 {% else %}
   {% assign reg_url = site.register_url %}
 {% endif %}
+{% assign int_url = site.interest_url %}
 
-<!-- ── HERO ── -->
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — changes based on status
+════════════════════════════════════════════════════════════ -->
+
+{% if s.status == "recruiting" %}
+<!-- ── HERO: RECRUITING ── -->
 <section class="hero chess-texture">
   <img class="hero-logo" src="images/logo.png" alt="Model NASS Logo">
   <p class="hero-eyebrow">{{ s.eyebrow }}</p>
@@ -34,10 +44,103 @@ og_url: "https://modelnass.ng"
   <div class="scroll-hint"><div class="scroll-arrow"></div></div>
 </section>
 
+{% elsif s.status == "upcoming" %}
+<!-- ── HERO: UPCOMING (applications closed, session approaching) ── -->
+<section class="hero chess-texture hero-upcoming">
+  <img class="hero-logo" src="images/logo.png" alt="Model NASS Logo">
+  <p class="hero-eyebrow">Model National Assembly · Session {{ s.number }}</p>
+  <h1 class="hero-title">{{ s.title_prefix }} <em>{{ s.title_highlight }}</em><br>{{ s.title_suffix }}</h1>
+  <div class="hero-status-badge">Applications closed</div>
+  <p class="hero-subtitle">
+    {% if s.confirmed_date and s.confirmed_date != "" %}
+      The session is confirmed for <strong>{{ s.confirmed_date }}</strong>{% if s.confirmed_venue and s.confirmed_venue != "" %}, {{ s.confirmed_venue }}{% endif %}.
+      {% if s.delegate_count %}{{ s.delegate_count }} delegates selected.{% endif %}
+    {% else %}
+      The session is coming. {% if s.delegate_count %}{{ s.delegate_count }} delegates have been selected.{% endif %} Date and venue to be announced.
+    {% endif %}
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-meta">Want to be notified about future sessions?</p>
+  <div class="hero-cta-group">
+    <a href="{{ int_url }}" target="_blank" class="btn-primary">Join the Mailing List</a>
+    <a href="#the-bill" class="btn-ghost">What delegates will debate →</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div></div>
+</section>
+
+{% elsif s.status == "just_happened" %}
+<!-- ── HERO: JUST HAPPENED ── -->
+<section class="hero chess-texture hero-recap">
+  <img class="hero-logo" src="images/logo.png" alt="Model NASS Logo">
+  <p class="hero-eyebrow">Model National Assembly · Session {{ latest.number }}</p>
+  <h1 class="hero-title"><em>Session {{ latest.number }}</em><br>just happened.</h1>
+  <p class="hero-subtitle">
+    {{ latest.delegates }} delegates. {{ latest.date }}.<br>
+    {{ latest.theme }}.
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-meta">The next session will be announced in due course.</p>
+  <div class="hero-cta-group">
+    {% if latest.report_url and latest.report_url != "" %}
+    <a href="{{ latest.report_url }}" target="_blank" class="btn-primary">Read the Report</a>
+    {% endif %}
+    {% if latest.video_id and latest.video_id != "" %}
+    <a href="https://www.youtube.com/watch?v={{ latest.video_id }}" target="_blank" class="btn-ghost">Watch the Session →</a>
+    {% endif %}
+    {% unless latest.report_url and latest.report_url != "" %}
+    <a href="/past-sessions/" class="btn-primary">See What Happened</a>
+    {% endunless %}
+    <a href="{{ int_url }}" target="_blank" class="btn-ghost">Get notified about Session {{ s.number }} →</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div></div>
+</section>
+
+{% else %}
+<!-- ── HERO: BETWEEN SESSIONS (evergreen) ── -->
+<section class="hero chess-texture hero-between">
+  <img class="hero-logo" src="images/logo.png" alt="Model NASS Logo">
+  <p class="hero-eyebrow">A Care for Knowledge Initiative</p>
+  <h1 class="hero-title">A permanent<br>youth <em>deliberative</em><br>body.</h1>
+  <p class="hero-subtitle">
+    Young Nigerians aged 18–30, arguing seriously about the hardest problems — inside a fictional country designed to make that possible.
+  </p>
+  <div class="hero-divider"></div>
+  <p class="hero-meta">No active session right now · Applications open when a session is announced</p>
+  <div class="hero-cta-group">
+    <a href="{{ int_url }}" target="_blank" class="btn-primary">Express Interest in Future Sessions</a>
+    <a href="/past-sessions/" class="btn-ghost">See past sessions →</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div></div>
+</section>
+{% endif %}
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT SNIPPET — always visible
+════════════════════════════════════════════════════════════ -->
+<section class="about-snippet centered" id="about">
+  <div class="content">
+    <span class="section-eyebrow">{{ ab.snippet.eyebrow }}</span>
+    <h2>{{ ab.snippet.heading }}</h2>
+    {% for para in ab.snippet.paragraphs %}
+    <p>{{ para }}</p>
+    {% endfor %}
+    <a href="/about/" class="about-snippet-link">{{ ab.snippet.link_text }}</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SESSION-SPECIFIC CONTENT
+     Shown for recruiting and upcoming only
+════════════════════════════════════════════════════════════ -->
+
+{% if s.status == "recruiting" or s.status == "upcoming" %}
+
 <!-- ── THE BILL ── -->
 <section class="bill-section centered" id="the-bill">
   <div class="content">
-    <span class="section-eyebrow">The Session Brief</span>
+    <span class="section-eyebrow">The Session Brief · Session {{ s.number }}</span>
     <h2>{{ s.brief_heading }}</h2>
     {% for para in s.brief_body %}
     <p>{{ para }}</p>
@@ -53,8 +156,13 @@ og_url: "https://modelnass.ng"
   </div>
 </section>
 
-<!-- ── WHAT IS MONA ── -->
-<section class="mona-section centered" id="about">
+{% endif %}
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHAT IS MONA — always visible
+════════════════════════════════════════════════════════════ -->
+<section class="mona-section centered" id="mona">
   <div class="content">
     <span class="section-eyebrow">The Setting</span>
     <h2>The Federal Republic of Mona</h2>
@@ -64,7 +172,7 @@ og_url: "https://modelnass.ng"
       without the noise of real-world political allegiances.
     </p>
     <p>
-      Model NASS itself was established under Mona's Civic Inclusion and Participatory
+      Model NASS was established under Mona's Civic Inclusion and Participatory
       Governance Reform Act, five years after a nationwide youth movement demanded a seat
       at the table. It is a formal youth legislative body with the power to submit
       advisory resolutions directly to the President and National Assembly.
@@ -76,21 +184,28 @@ og_url: "https://modelnass.ng"
   </div>
 </section>
 
-<!-- ── PULL QUOTE ── -->
-{% if s.quote and s.quote.text and s.quote.text != "" %}
+
+<!-- ═══════════════════════════════════════════════════════════
+     PULL QUOTE — recruiting only
+════════════════════════════════════════════════════════════ -->
+{% if s.status == "recruiting" and s.quote and s.quote.text and s.quote.text != "" %}
 <section class="quote-section">
   <p class="quote-text">"{{ s.quote.text }}"</p>
   <p class="quote-attr">{{ s.quote.attribution }}</p>
 </section>
 {% endif %}
 
-<!-- ── WHO IT'S FOR ── -->
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHO IT'S FOR — recruiting and between
+════════════════════════════════════════════════════════════ -->
+{% if s.status == "recruiting" or s.status == "between" %}
 <section class="for-section centered">
   <div class="content">
     <span class="section-eyebrow">Who Should Apply</span>
     <h2>You don't need experience. You need commitment.</h2>
     <p>
-      Model NASS is open to students and young professionals who are willing
+      Model NASS is open to students and young professionals aged 18–30 who are willing
       to engage seriously with complex, uncomfortable ideas.
     </p>
   </div>
@@ -103,11 +218,41 @@ og_url: "https://modelnass.ng"
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
-<!-- ── FINAL CTA ── -->
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINAL CTA — varies by status
+════════════════════════════════════════════════════════════ -->
+{% if s.status == "recruiting" %}
 <section class="final-cta">
   <div class="spots-badge">{{ s.delegate_count }} delegate seats available</div>
   <h2>{{ s.cta_heading }}</h2>
   <p>{{ s.cta_body }}</p>
   <a href="{{ reg_url }}" target="_blank" class="btn-primary">Register Now</a>
 </section>
+
+{% elsif s.status == "upcoming" %}
+<section class="final-cta">
+  <div class="spots-badge">Session {{ s.number }} · Delegates selected</div>
+  <h2>Not in this one? There's a next time.</h2>
+  <p>Join the mailing list and be first to know when applications open for the next session.</p>
+  <a href="{{ int_url }}" target="_blank" class="btn-primary">Join the Mailing List</a>
+</section>
+
+{% elsif s.status == "just_happened" %}
+<section class="final-cta">
+  <div class="spots-badge">Session {{ latest.number }} complete</div>
+  <h2>The next session is coming.</h2>
+  <p>We'll announce it when it's ready. Join the mailing list to hear first.</p>
+  <a href="{{ int_url }}" target="_blank" class="btn-primary">Join the Mailing List</a>
+</section>
+
+{% else %}
+<section class="final-cta">
+  <div class="spots-badge">Sessions run periodically throughout the year</div>
+  <h2>When applications open, you'll want to know.</h2>
+  <p>Leave your details and we'll reach out as soon as the next session is announced.</p>
+  <a href="{{ int_url }}" target="_blank" class="btn-primary">Express Interest</a>
+</section>
+{% endif %}

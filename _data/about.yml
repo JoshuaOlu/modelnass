@@ -1,0 +1,92 @@
+# ═══════════════════════════════════════════════════════════════
+# ABOUT MODEL NASS
+# ───────────────────────────────────────────────────────────────
+# This file drives both the short "About" snippet on the homepage
+# and the full /about/ page.
+#
+# You should rarely need to edit this — it describes the programme
+# itself, which doesn't change between sessions.
+# ═══════════════════════════════════════════════════════════════
+
+# ── HOMEPAGE SNIPPET ────────────────────────────────────────────
+# A short, punchy summary shown between the hero and the session
+# brief. First-time visitors should understand what this is in
+# under 30 seconds. Two or three sentences maximum per paragraph.
+
+snippet:
+  eyebrow: "What Is Model NASS"
+  heading: "A room where you have to think."
+  paragraphs:
+    - "Model NASS is a civic simulation programme. Participants are assigned identities as delegates to the Model National Assembly of the Federal Republic of Mona — a fictional country close enough to Nigeria that the policy questions feel real, and distant enough that you can engage without the weight of your own political allegiances."
+    - "You'll be given a character, a position, and a problem. You'll have to argue it seriously — even if it's not what you'd normally say. That's the point. Deliberation, not performance. Complexity, not answers."
+  link_text: "How it works →"
+
+# ── FULL ABOUT PAGE ─────────────────────────────────────────────
+
+page:
+  # Hero
+  eyebrow: "Model NASS · Care for Knowledge"
+  heading: "A permanent youth deliberative body."
+  intro: "Model NASS is a civic simulation programme building deliberative capacity and political complexity literacy among young Nigerians aged 18–30."
+
+  # The problem section
+  problem:
+    eyebrow: "The Problem We Are Responding To"
+    heading: "Young Nigerians care. But caring is not the same as being able to engage."
+    paragraphs:
+      - "In Nigeria — and across much of Africa — there is a persistent gap between young people and the civic life of their country. It is not a gap of interest. Many young Nigerians care deeply about what happens to their country. The gap is more specific: it is a gap in the capacity to engage with governance as it actually is, rather than as it is imagined to be."
+      - "Two problems sit at the heart of this. The first is complexity illiteracy — many young people approach governance problems as though they have simple, obvious solutions, because they have never sat inside a complex policy problem and tried to work through it with people who see it completely differently. The second is the structural absence of youth voice from how policy is actually made. The two reinforce each other: a young person who believes political problems are simple is unlikely to invest the effort that genuine civic participation requires."
+
+  # How it works section
+  how:
+    eyebrow: "What Happens in a Session"
+    heading: "You are not yourself. That is what makes it work."
+    paragraphs:
+      - "Each session brings together young Nigerians aged 18–30 — students, graduates, and young professionals — to deliberate a specific policy question through structured committee work, plenary debate, and a formal vote. Participants carry character profiles, party affiliations, state representations, and committee assignments. They read investigative journalism and legislative bills written for the fictional world. They argue, negotiate, and decide."
+      - "The session is designed as a real legislative process. Not a conversation — a consequential structured procedure, where the quality of the deliberation produces a real outcome that the chamber has to live with."
+    steps:
+      - icon: "📋"
+        label: "Receive your character"
+        text: "You're assigned a delegate identity — a name, a state, a political party, a faith tradition, a position on the bill."
+      - icon: "📖"
+        label: "Study the brief"
+        text: "You read the legislative bill, the investigative journalism, and the Monapedia background on the Monan context."
+      - icon: "🏛️"
+        label: "Enter the chamber"
+        text: "Committee sessions, rapporteur presentations, cross-committee debate. The real structure of a legislature, compressed into a day."
+      - icon: "🗳️"
+        label: "Vote and live with it"
+        text: "The chamber votes. The resolution reflects what the delegates negotiated — not what anyone walked in wanting."
+
+  # Why Mona section
+  mona:
+    eyebrow: "Why Mona?"
+    heading: "The fiction is not the simulation. The fiction is what makes the simulation possible."
+    paragraphs:
+      - "Without the fictional world of Mona, a room full of young Nigerians arguing about gender equity legislation, land rights, or resource allocation would immediately collapse into existing fault lines — tribal, religious, political. The conversation would be about what it always is, and people would say what they always say."
+      - "Mona creates the distance. When you argue as Hon. Loma Kire of Ugwulore State — a character whose worldview, faith tradition, and political party are defined and distinct from yours — you can make the strongest possible case for a position you would never normally defend. And in making that case seriously, something genuine happens: you encounter the actual arguments, the actual trade-offs, the actual human reasoning behind a position you had previously dismissed. That encounter is the learning."
+      - "The learning that emerges is real even though the country is not."
+    monapedia_cta: "Explore the world of Mona in Monapedia ↗"
+
+  # Long view section
+  longview:
+    eyebrow: "The Long View"
+    heading: "We are not building a programme. We are building a generation."
+    paragraphs:
+      - "Model NASS is not a solution to Nigeria's governance challenges. No single programme is. What it is — what we are building with intention and care — is one of the inputs to a generation of leaders who are more capable of navigating complexity with integrity."
+      - "We do not need every delegate to become a politician. We need them to become the kind of citizen who makes every politician's job harder to do badly."
+
+  # Who should attend
+  audience:
+    eyebrow: "Who Should Apply"
+    heading: "You don't need experience. You need commitment."
+    intro: "Model NASS is open to students and young professionals aged 18–30 who are willing to engage seriously with complex, uncomfortable ideas."
+    cards:
+      - icon: "⚖️"
+        text: "Interested in law, policy, or governance"
+      - icon: "🗣️"
+        text: "Strong in debate, negotiation, or persuasion"
+      - icon: "📚"
+        text: "Research-minded, curious about social systems"
+      - icon: "🌍"
+        text: "Passionate about equity, inclusion, and civic life"

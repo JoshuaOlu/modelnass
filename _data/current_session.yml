@@ -1,14 +1,31 @@
 # ═══════════════════════════════════════════════════════════════
 # CURRENT SESSION
 # ───────────────────────────────────────────────────────────────
-# This is the ONE file you update each time a new session is
-# being promoted on the homepage.
+# This is the ONE file you update to change what the homepage shows.
 #
-# When a session ends:
+# WORKFLOW SUMMARY
+# ───────────────────────────────────────────────────────────────
+# Starting a new recruitment cycle:
+#   1. Update all fields below for the new session
+#   2. Set status: "recruiting"
+#   3. Replace the og_image with the new session artwork
+#
+# Applications close, session approaching:
+#   1. Set status: "upcoming"
+#   2. Update date_text to the confirmed date and venue
+#
+# Session just ended:
 #   1. Add the completed session to _data/sessions.yml (top of list)
-#   2. Update every field below for the new session
-#   3. Replace /images/share-preview.png with the new session image
+#   2. Set status: "just_happened"
+#   (homepage auto-pulls the name and description from sessions.yml)
+#
+# Nothing imminent, holding between cycles:
+#   1. Set status: "between"
+#
+# STATUS OPTIONS: recruiting | upcoming | just_happened | between
 # ═══════════════════════════════════════════════════════════════
+
+status: "recruiting"
 
 number: 262
 name: "The Checkmate Initiative"
@@ -16,23 +33,26 @@ name: "The Checkmate Initiative"
 # Eyebrow text in the hero (e.g. "Model National Assembly · October 2026")
 eyebrow: "Model National Assembly · October 2026"
 
-# Large italic word(s) in the hero title — displayed in gold
-# Full title renders as: The <em>Checkmate</em> Initiative
+# Hero title — renders as: [title_prefix] *[title_highlight]* [title_suffix]
+# The highlight word appears in gold italics.
 title_prefix: "The"
 title_highlight: "Checkmate"
 title_suffix: "Initiative"
 
-# Below the title
 tagline: "Institutionalising gender equity in Monan leadership."
 subtitle: "A polarising bill. A fractured chamber. 72 delegates to decide."
 
-# Small metadata line below the divider
+# Small line below the divider in the hero
 date_text: "Date to be announced · Registration now open"
 
-# Delegate count shown in the final CTA badge
+# Confirmed date and venue — used in "upcoming" status
+confirmed_date: ""
+confirmed_venue: ""
+
 delegate_count: 72
 
-# Registration link — leave blank to fall back to site.register_url in _config.yml
+# Registration link for active recruitment.
+# Leave blank to fall back to site.register_url in _config.yml.
 register_url: ""
 
 # ── SHARE / OG META ─────────────────────────────────────────────
@@ -41,17 +61,12 @@ og_description: "Institutionalising gender equity in Monan leadership. A polaris
 og_image: "/images/share-preview-v2.png"
 
 # ── THE BILL / SESSION BRIEF ────────────────────────────────────
-# The section below the hero explaining what the session is about.
 brief_heading: "The Gender Equity in Leadership Act has arrived on the floor."
-
-# Each item becomes a paragraph. Add or remove paragraphs as needed.
 brief_body:
   - "The bill proposes mandatory gender equity targets across every sector of Monan society — from government ministries and state agencies to private companies with government contracts, and including religious organisations. Proponents call it a historic correction. Critics call it overreach."
   - "For the first time, the chamber must answer a question that has divided Mona for a generation: <strong style=\"color: #fff;\">Who decides who leads?</strong>"
 
-# ── FACTIONS / FAULT LINES ─────────────────────────────────────
-# The three (or two, or four) fault-line cards on the dark green section.
-# Remove a block entirely to show fewer cards.
+# ── FACTIONS / FAULT LINES ──────────────────────────────────────
 factions:
   - label: "The Reformers"
     text: "Decades of documented exclusion demand a structural response. Voluntary targets have failed. The time for legislation is now."
@@ -61,13 +76,12 @@ factions:
     text: "The bill's ambition is right but its reach is too broad. What amendments could make it pass — and what would that cost?"
 
 # ── PULL QUOTE ──────────────────────────────────────────────────
-# Optional. Remove this block entirely (or leave text blank) to hide the quote section.
+# Remove this block entirely (or leave text blank) to hide the quote section.
 quote:
   text: "The simulation is not preparation for the real thing. It is the real thing — just in a room where you're allowed to be wrong."
   attribution: "— The Team, March 28 Emergency Session"
 
-# ── WHO IT'S FOR CARDS ──────────────────────────────────────────
-# The four audience cards. You can update the emoji and text per session.
+# ── WHO IT'S FOR ────────────────────────────────────────────────
 audience:
   - icon: "⚖️"
     text: "Interested in law, policy, or governance"

@@ -1,0 +1,113 @@
+---
+layout: base
+title: About Model NASS
+description: Model NASS is a civic simulation programme building deliberative capacity and political complexity literacy among young Nigerians aged 18–30.
+---
+
+{% assign ab = site.data.about %}
+{% assign p  = ab.page %}
+{% assign s  = site.data.current_session %}
+
+{% if s.register_url and s.register_url != "" %}
+  {% assign reg_url = s.register_url %}
+{% else %}
+  {% assign reg_url = site.register_url %}
+{% endif %}
+{% assign int_url = site.interest_url %}
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <span class="page-eyebrow">{{ p.eyebrow }}</span>
+  <h1 class="page-title">{{ p.heading }}</h1>
+  <p class="page-intro">{{ p.intro }}</p>
+</header>
+
+<!-- ── THE PROBLEM ── -->
+<section class="about-section about-problem">
+  <div class="about-content">
+    <span class="section-eyebrow">{{ p.problem.eyebrow }}</span>
+    <h2>{{ p.problem.heading }}</h2>
+    {% for para in p.problem.paragraphs %}
+    <p>{{ para }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="about-section about-how">
+  <div class="about-content">
+    <span class="section-eyebrow">{{ p.how.eyebrow }}</span>
+    <h2>{{ p.how.heading }}</h2>
+    {% for para in p.how.paragraphs %}
+    <p>{{ para }}</p>
+    {% endfor %}
+  </div>
+  <div class="about-steps">
+    {% for step in p.how.steps %}
+    <div class="about-step">
+      <div class="about-step-icon">{{ step.icon }}</div>
+      <div class="about-step-body">
+        <div class="about-step-label">{{ step.label }}</div>
+        <p>{{ step.text }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── WHY MONA ── -->
+<section class="about-section about-mona">
+  <div class="about-content">
+    <span class="section-eyebrow">{{ p.mona.eyebrow }}</span>
+    <h2>{{ p.mona.heading }}</h2>
+    {% for para in p.mona.paragraphs %}
+    <p>{{ para }}</p>
+    {% endfor %}
+    <a href="{{ site.monapedia_url }}" target="_blank" class="about-monapedia-link">{{ p.mona.monapedia_cta }}</a>
+  </div>
+</section>
+
+<!-- ── THE LONG VIEW ── -->
+<section class="about-section about-longview">
+  <div class="about-content">
+    <span class="section-eyebrow">{{ p.longview.eyebrow }}</span>
+    <h2>{{ p.longview.heading }}</h2>
+    {% for para in p.longview.paragraphs %}
+    <p>{{ para }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── WHO SHOULD APPLY ── -->
+<section class="about-section about-audience centered">
+  <div class="about-content">
+    <span class="section-eyebrow">{{ p.audience.eyebrow }}</span>
+    <h2>{{ p.audience.heading }}</h2>
+    <p>{{ p.audience.intro }}</p>
+  </div>
+  <div class="for-cards" style="max-width: 900px; margin: 2.5rem auto 0;">
+    {% for card in p.audience.cards %}
+    <div class="for-card">
+      <span class="for-icon">{{ card.icon }}</span>
+      <p>{{ card.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-wrapper">
+  <div class="cta-section">
+    {% if s.status == "recruiting" %}
+    <span class="section-eyebrow">Session {{ s.number }} · Now Recruiting</span>
+    <h2>{{ s.title_prefix }} {{ s.title_highlight }} {{ s.title_suffix }} awaits.</h2>
+    <p>{{ s.delegate_count }} delegate seats. {{ s.tagline }} Register your interest now.</p>
+    <a href="{{ reg_url }}" target="_blank" class="btn-primary">Register Now</a>
+    {% else %}
+    <span class="section-eyebrow">Stay Connected</span>
+    <h2>Be first to know when the next session opens.</h2>
+    <p>Join the mailing list and we'll reach out as soon as applications open.</p>
+    <a href="{{ int_url }}" target="_blank" class="btn-primary">Join the Mailing List</a>
+    {% endif %}
+  </div>
+</div>

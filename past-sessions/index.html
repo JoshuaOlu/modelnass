@@ -10,6 +10,7 @@ description: Archive of Model NASS sessions — the briefs, the debates, and the
 {% else %}
   {% assign reg_url = site.register_url %}
 {% endif %}
+{% assign int_url = site.interest_url %}
 
 <!-- ── PAGE HEADER ── -->
 <header class="page-header">
@@ -21,27 +22,72 @@ description: Archive of Model NASS sessions — the briefs, the debates, and the
   </p>
 </header>
 
+<!-- ── COMING NEXT BANNER ── -->
+<div class="coming-next-banner">
+  <div class="coming-next-inner">
+    <div class="coming-next-text">
+      <span class="coming-next-eyebrow">
+        {% if cur.status == "recruiting" %}Now Recruiting · Session {{ cur.number }}
+        {% elsif cur.status == "upcoming" %}Coming Up · Session {{ cur.number }}
+        {% else %}Next Session · Coming Soon{% endif %}
+      </span>
+      <p>
+        {% if cur.status == "recruiting" %}
+          <strong>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }}</strong> — {{ cur.tagline }} Applications are open.
+        {% elsif cur.status == "upcoming" %}
+          <strong>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }}</strong> — Applications closed. {% if cur.confirmed_date and cur.confirmed_date != "" %}Session on {{ cur.confirmed_date }}.{% else %}Date to be confirmed.{% endif %}
+        {% else %}
+          The next session has not been announced yet. Join the mailing list to hear first.
+        {% endif %}
+      </p>
+    </div>
+    <a href="{% if cur.status == 'recruiting' %}{{ reg_url }}{% else %}{{ int_url }}{% endif %}"
+       target="_blank"
+       class="btn-primary coming-next-cta">
+      {% if cur.status == "recruiting" %}Register Now
+      {% elsif cur.status == "upcoming" %}Join Mailing List
+      {% else %}Express Interest{% endif %}
+    </a>
+  </div>
+</div>
+
 {% include monapedia-banner.html %}
 
 <!-- ── MAIN ── -->
 <main>
 
-  {% for session in site.data.sessions %}
-  <article class="session-card">
+  {% assign session_count = site.data.sessions | size %}
 
-    <!-- CARD HEADER -->
-    <div class="session-card-header">
-      <div>
+  {% for session in site.data.sessions %}
+  {% assign is_first = forloop.first %}
+
+  <article class="session-card {% unless is_first %}session-card-collapsed{% endunless %}"
+           id="session-{{ session.number }}">
+
+    <!-- CARD HEADER — always visible, click to expand/collapse -->
+    <button class="session-card-header"
+            aria-expanded="{% if is_first %}true{% else %}false{% endif %}"
+            aria-controls="session-body-{{ session.number }}"
+            onclick="toggleSession(this)">
+      <div class="session-header-left">
         <div class="session-number">Session {{ session.number }}</div>
         <h2 class="session-name">{{ session.name }}</h2>
+        <p class="session-summary">{{ session.delegates }} delegates · {{ session.date }} · {{ session.theme }}</p>
       </div>
-      {% if session.tag %}
-      <span class="session-tag">{{ session.tag }}</span>
-      {% endif %}
-    </div>
+      <div class="session-header-right">
+        {% if session.tag %}
+        <span class="session-tag">{{ session.tag }}</span>
+        {% endif %}
+        <span class="session-chevron" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </div>
+    </button>
 
-    <!-- CARD BODY -->
-    <div class="session-card-body">
+    <!-- CARD BODY — expanded/collapsed -->
+    <div class="session-card-body"
+         id="session-body-{{ session.number }}"
+         {% unless is_first %}style="display:none"{% endunless %}>
 
       <!-- META ROW -->
       <div class="session-meta">
@@ -68,7 +114,7 @@ description: Archive of Model NASS sessions — the briefs, the debates, and the
       <p class="session-description">{{ para }}</p>
       {% endfor %}
 
-      <!-- SESSION LINKS (report + video) -->
+      <!-- SESSION LINKS -->
       {% assign has_report = false %}
       {% assign has_video  = false %}
       {% if session.report_url and session.report_url != "" %}{% assign has_report = true %}{% endif %}
@@ -129,12 +175,38 @@ description: Archive of Model NASS sessions — the briefs, the debates, and the
   </article>
   {% endfor %}
 
-  <!-- NEXT SESSION PROMO -->
-  <div class="next-section">
-    <span class="section-eyebrow">Coming Next · Session {{ cur.number }}</span>
-    <h2>{{ cur.title_prefix }} {{ cur.title_highlight }} {{ cur.title_suffix }}</h2>
-    <p>{{ cur.tagline }} {{ cur.subtitle }}</p>
-    <a href="{{ reg_url }}" target="_blank" class="btn-primary">Register for Session {{ cur.number }}</a>
-  </div>
-
 </main>
+
+<script>
+function toggleSession(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+
+  // Close all open sessions first (one-at-a-time behaviour)
+  document.querySelectorAll('.session-card-header[aria-expanded="true"]').forEach(function(openBtn) {
+    if (openBtn !== btn) {
+      openBtn.setAttribute('aria-expanded', 'false');
+      openBtn.closest('.session-card').classList.add('session-card-collapsed');
+      var bodyId = openBtn.getAttribute('aria-controls');
+      document.getElementById(bodyId).style.display = 'none';
+    }
+  });
+
+  // Toggle the clicked one
+  var bodyId = btn.getAttribute('aria-controls');
+  var body   = document.getElementById(bodyId);
+
+  if (expanded) {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.closest('.session-card').classList.add('session-card-collapsed');
+    body.style.display = 'none';
+  } else {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.closest('.session-card').classList.remove('session-card-collapsed');
+    body.style.display = 'block';
+    // Smooth scroll so the opening card header is in view
+    setTimeout(function() {
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+}
+</script>

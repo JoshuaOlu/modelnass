@@ -700,3 +700,208 @@ footer a:hover { opacity: 0.75; }
   .session-links { flex-direction: column; }
   .session-link-btn { justify-content: center; }
 }
+
+/* ══════════════════════════
+   HERO VARIANTS
+   (upcoming, just_happened, between)
+══════════════════════════ */
+.hero-status-badge {
+  display: inline-block;
+  background: rgba(201,162,77,0.15);
+  border: 1px solid rgba(201,162,77,0.4);
+  color: var(--accent-gold);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.4rem 1rem; border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+
+/* ══════════════════════════
+   ABOUT SNIPPET (homepage)
+══════════════════════════ */
+.about-snippet {
+  background: #ffffff;
+  padding: 5rem 1.5rem;
+}
+.about-snippet h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 700;
+  line-height: 1.2; letter-spacing: -0.015em;
+  color: var(--deep-green); margin-bottom: 1.5rem; max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+.about-snippet p {
+  font-size: 1.05rem; line-height: 1.8;
+  color: #3a3a3a; max-width: 680px;
+  margin: 0 auto 1.2rem;
+}
+.about-snippet-link {
+  display: inline-block; margin-top: 1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--deep-green); text-decoration: none;
+  border-bottom: 2px solid var(--accent-gold);
+  padding-bottom: 2px; transition: opacity 0.2s;
+}
+.about-snippet-link:hover { opacity: 0.7; }
+
+/* ══════════════════════════
+   COMING NEXT BANNER
+   (top of past-sessions page)
+══════════════════════════ */
+.coming-next-banner {
+  background: var(--deep-green);
+  border-bottom: 1px solid rgba(201,162,77,0.2);
+  padding: 1.5rem 2rem;
+}
+.coming-next-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+}
+.coming-next-eyebrow {
+  display: block;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-gold); margin-bottom: 0.35rem;
+}
+.coming-next-text p {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.92rem; color: rgba(223,230,227,0.85);
+  margin: 0; line-height: 1.5;
+}
+.coming-next-text strong { color: #fff; font-weight: 600; }
+.coming-next-cta {
+  padding: 0.6rem 1.4rem; font-size: 0.85rem; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ══════════════════════════
+   ACCORDION SESSION CARDS
+══════════════════════════ */
+
+/* Reset the card header to a button */
+.session-card-header {
+  width: 100%;
+  background: var(--deep-green);
+  border: none; cursor: pointer; text-align: left;
+  padding: 2.5rem 2.5rem 2rem;
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  transition: background 0.2s;
+}
+.session-card-header:hover { background: var(--deep-green-mid); }
+
+.session-header-left { flex: 1; min-width: 0; }
+.session-header-right {
+  display: flex; align-items: flex-start;
+  gap: 0.75rem; flex-shrink: 0; padding-top: 0.25rem;
+}
+
+/* Summary line — visible when collapsed */
+.session-summary {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.83rem; color: rgba(223,230,227,0.55);
+  margin: 0.4rem 0 0; line-height: 1.4;
+  transition: opacity 0.2s;
+}
+/* When expanded, hide the summary (redundant with the meta row inside) */
+.session-card-header[aria-expanded="true"] .session-summary {
+  opacity: 0; height: 0; overflow: hidden; margin: 0;
+}
+
+/* Chevron rotation */
+.session-chevron {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; flex-shrink: 0; margin-top: 0.2rem;
+  color: rgba(201,162,77,0.7); transition: transform 0.25s ease;
+}
+.session-chevron svg { width: 18px; height: 18px; }
+.session-card-header[aria-expanded="true"] .session-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-gold);
+}
+
+/* Collapsed state — tighten the header padding */
+.session-card-collapsed .session-card-header {
+  padding-bottom: 2rem;
+}
+
+/* ══════════════════════════
+   ABOUT PAGE
+══════════════════════════ */
+.about-section {
+  padding: 5rem 1.5rem;
+}
+.about-content {
+  max-width: 780px; margin: 0 auto;
+}
+.about-content h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 700;
+  line-height: 1.2; letter-spacing: -0.015em;
+  color: var(--deep-green); margin-bottom: 1.5rem;
+}
+.about-content p {
+  font-size: 1.05rem; line-height: 1.85;
+  color: #3a3a3a; margin-bottom: 1.3rem;
+}
+
+/* Alternating backgrounds */
+.about-problem  { background: #ffffff; }
+.about-how      { background: var(--parchment); }
+.about-mona     { background: var(--deep-green); }
+.about-longview { background: #ffffff; }
+.about-audience { background: var(--parchment); text-align: center; }
+
+/* Mona section overrides (dark bg) */
+.about-mona .about-content h2,
+.about-mona .about-content p { color: rgba(244,246,245,0.9); }
+.about-mona .about-content h2 { color: #fff; }
+.about-mona .section-eyebrow  { color: var(--accent-gold); }
+
+.about-monapedia-link {
+  display: inline-block; margin-top: 1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--accent-gold); text-decoration: none;
+  border-bottom: 1px solid rgba(201,162,77,0.4);
+  padding-bottom: 2px; transition: border-color 0.2s;
+}
+.about-monapedia-link:hover { border-color: var(--accent-gold); }
+
+/* Session steps */
+.about-steps {
+  max-width: 780px; margin: 3rem auto 0;
+  display: grid; gap: 1.25rem;
+}
+.about-step {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  background: #fff; border: 1px solid var(--soft-gray);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 10px; padding: 1.4rem 1.6rem;
+}
+.about-step-icon {
+  font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem;
+}
+.about-step-label {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--deep-green); margin-bottom: 0.35rem;
+}
+.about-step p {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.93rem; color: var(--text-muted);
+  line-height: 1.6; margin: 0;
+}
+
+/* ══════════════════════════
+   RESPONSIVE ADDITIONS
+══════════════════════════ */
+@media (max-width: 640px) {
+  .coming-next-inner  { flex-direction: column; align-items: flex-start; }
+  .coming-next-cta    { width: 100%; text-align: center; }
+  .session-card-header { padding: 1.75rem 1.5rem 1.5rem; flex-wrap: nowrap; }
+  .session-header-right { flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+  .about-step         { flex-direction: column; gap: 0.75rem; }
+}
