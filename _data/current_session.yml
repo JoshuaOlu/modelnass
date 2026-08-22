@@ -25,7 +25,7 @@
 # STATUS OPTIONS: recruiting | upcoming | just_happened | between
 # ═══════════════════════════════════════════════════════════════
 
-status: "upcoming"
+status: "just_happened"
 
 number: 262
 name: "The Checkmate Initiative"
