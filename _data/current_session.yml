@@ -25,7 +25,7 @@
 # STATUS OPTIONS: recruiting | upcoming | just_happened | between
 # ═══════════════════════════════════════════════════════════════
 
-status: "recruiting"
+status: "upcoming"
 
 number: 262
 name: "The Checkmate Initiative"
@@ -46,8 +46,8 @@ subtitle: "A polarising bill. A fractured chamber. 72 delegates to decide."
 date_text: "Date to be announced · Registration now open"
 
 # Confirmed date and venue — used in "upcoming" status
-confirmed_date: ""
-confirmed_venue: ""
+confirmed_date: "Saturday, 18 October 2026"
+confirmed_venue: "Google Meet"
 
 delegate_count: 72
 
