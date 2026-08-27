@@ -956,8 +956,11 @@ footer a:hover { opacity: 0.75; }
 
 /* CFK icon inside links */
 .cfk-icon {
-  width: 14px;
-  height: 14px;
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
   object-fit: contain;
   flex-shrink: 0;
+  display: inline-block;
 }
