@@ -95,18 +95,6 @@ description: Meet the Model NASS Steering Committee — the team providing strat
             View on LinkedIn
           </a>
           {% endif %}
-          {% if member.fellow_slug and member.fellow_slug != "" %}
-          <a
-            class="linkedin-link"
-            href="https://fellowship.careforknowledge.org/fellows/{{ member.fellow_slug }}/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="{{ member.name }} on CFK Fellowship"
-          >
-            <img src="/images/icons/cfk-icon-light.png" alt="CFK Fellowship" style="width:13px;height:13px;max-width:13px;max-height:13px;display:inline-block;vertical-align:middle;flex-shrink:0;">
-            CFK Profile
-          </a>
-          {% endif %}
         </div>
       </div>
     </div>
@@ -153,18 +141,6 @@ description: Meet the Model NASS Steering Committee — the team providing strat
             >
               <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg>
               LinkedIn
-            </a>
-            {% endif %}
-            {% if member.fellow_slug and member.fellow_slug != "" %}
-            <a
-              class="linkedin-link-dark"
-              href="https://fellowship.careforknowledge.org/fellows/{{ member.fellow_slug }}/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="{{ member.name }} on CFK Fellowship"
-            >
-              <img src="/images/icons/cfk-icon-dark.png" alt="CFK Fellowship" style="width:13px;height:13px;max-width:13px;max-height:13px;display:inline-block;vertical-align:middle;flex-shrink:0;">
-              CFK Profile
             </a>
             {% endif %}
           </div>
