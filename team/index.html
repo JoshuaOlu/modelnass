@@ -62,9 +62,14 @@ description: Meet the Model NASS Steering Committee — the team providing strat
 
     <!-- CHAIRPERSON — featured card -->
     <div class="chair-card">
+      {% if member.fellow_slug and member.fellow_slug != "" %}
+        {% assign member_photo = "https://fellowship.careforknowledge.org/assets/images/fellows/" | append: member.fellow_slug | append: ".jpg" %}
+      {% else %}
+        {% assign member_photo = member.photo %}
+      {% endif %}
       <div class="chair-card-image">
         <img
-          src="{{ member.photo }}"
+          src="{{ member_photo }}"
           alt="{{ member.name }}"
           onerror="this.parentElement.innerHTML='<div class=\'chair-card-image-placeholder\'><span>👤</span></div>'"
         >
@@ -73,18 +78,32 @@ description: Meet the Model NASS Steering Committee — the team providing strat
         <span class="member-role-badge">{{ member.role }}</span>
         <h3>{{ member.name }}</h3>
         <p>{{ member.bio }}</p>
-        {% if member.linkedin and member.linkedin != "" %}
-        <a
-          class="linkedin-link"
-          href="{{ member.linkedin }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="{{ member.name }} on LinkedIn"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg>
-          View on LinkedIn
-        </a>
-        {% endif %}
+        <div class="member-links">
+          {% if member.linkedin and member.linkedin != "" %}
+          <a
+            class="linkedin-link"
+            href="{{ member.linkedin }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ member.name }} on LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg>
+            View on LinkedIn
+          </a>
+          {% endif %}
+          {% if member.fellow_slug and member.fellow_slug != "" %}
+          <a
+            class="cfk-profile-link"
+            href="https://fellowship.careforknowledge.org/fellows/{{ member.fellow_slug }}/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ member.name }} on CFK Fellowship"
+          >
+            <img src="/images/icons/cfk-icon-light.png" alt="CFK Fellowship" class="cfk-icon">
+            CFK Profile
+          </a>
+          {% endif %}
+        </div>
       </div>
     </div>
 
@@ -98,10 +117,15 @@ description: Meet the Model NASS Steering Committee — the team providing strat
     <div class="members-grid">
       {% for member in site.data.team %}
         {% unless member.featured %}
+      {% if member.fellow_slug and member.fellow_slug != "" %}
+        {% assign member_photo = "https://fellowship.careforknowledge.org/assets/images/fellows/" | append: member.fellow_slug | append: ".jpg" %}
+      {% else %}
+        {% assign member_photo = member.photo %}
+      {% endif %}
       <article class="member-card">
         <div class="member-card-image">
           <img
-            src="{{ member.photo }}"
+            src="{{ member_photo }}"
             alt="{{ member.name }}"
             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'member-card-image-placeholder\'>👤</div>'"
           >
@@ -110,18 +134,32 @@ description: Meet the Model NASS Steering Committee — the team providing strat
           <span class="member-role-badge">{{ member.role }}</span>
           <h3>{{ member.name }}</h3>
           <p>{{ member.bio }}</p>
-          {% if member.linkedin and member.linkedin != "" %}
-          <a
-            class="linkedin-link-dark"
-            href="{{ member.linkedin }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="{{ member.name }} on LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg>
-            LinkedIn
-          </a>
-          {% endif %}
+          <div class="member-links">
+            {% if member.linkedin and member.linkedin != "" %}
+            <a
+              class="linkedin-link-dark"
+              href="{{ member.linkedin }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{ member.name }} on LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-linkedin"/></svg>
+              LinkedIn
+            </a>
+            {% endif %}
+            {% if member.fellow_slug and member.fellow_slug != "" %}
+            <a
+              class="cfk-profile-link-dark"
+              href="https://fellowship.careforknowledge.org/fellows/{{ member.fellow_slug }}/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{ member.name }} on CFK Fellowship"
+            >
+              <img src="/images/icons/cfk-icon-dark.png" alt="CFK Fellowship" class="cfk-icon">
+              CFK Profile
+            </a>
+            {% endif %}
+          </div>
         </div>
       </article>
         {% endunless %}
