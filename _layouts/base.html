@@ -8,16 +8,27 @@
   {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}" />{% endif %}
   <link rel="icon" type="image/png" href="/images/favicon.png">
 
-  {% if page.og_title %}
-  <meta property="og:title" content="{{ page.og_title }}" />
-  <meta property="og:description" content="{{ page.og_description }}" />
-  <meta property="og:image" content="{{ page.og_image }}" />
-  <meta property="og:url" content="{{ page.og_url | default: site.url }}" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ page.og_title }}" />
-  <meta name="twitter:description" content="{{ page.og_description }}" />
-  <meta name="twitter:image" content="{{ page.og_image }}" />
+  {% if page.use_session_meta %}
+    {% assign _s = site.data.current_session %}
+    <meta property="og:title" content="{{ _s.og_title }}" />
+    <meta property="og:description" content="{{ _s.og_description }}" />
+    <meta property="og:image" content="{{ _s.og_image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: site.url }}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ _s.og_title }}" />
+    <meta name="twitter:description" content="{{ _s.og_description }}" />
+    <meta name="twitter:image" content="{{ _s.og_image }}" />
+  {% elsif page.og_title %}
+    <meta property="og:title" content="{{ page.og_title }}" />
+    <meta property="og:description" content="{{ page.og_description }}" />
+    <meta property="og:image" content="{{ page.og_image }}" />
+    <meta property="og:url" content="{{ page.og_url | default: site.url }}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page.og_title }}" />
+    <meta name="twitter:description" content="{{ page.og_description }}" />
+    <meta name="twitter:image" content="{{ page.og_image }}" />
   {% endif %}
 
   <link rel="stylesheet" href="/assets/css/style.css">
