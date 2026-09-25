@@ -43,11 +43,12 @@ tagline: "Institutionalising gender equity in Monan leadership."
 subtitle: "A polarising bill. A fractured chamber. 72 delegates to decide."
 
 # Small line below the divider in the hero
-date_text: "Date to be announced · Registration now open"
+# date_text: "Date to be announced · Registration now open"
+date_text: "Saturday, 10 October 2026 · Google Meet"
 
 # Confirmed date and venue — used in "upcoming" status
 confirmed_date: "Saturday, 10 October 2026"
-confirmed_venue: ""
+confirmed_venue: "Google Meet"
 
 delegate_count: 72
 
